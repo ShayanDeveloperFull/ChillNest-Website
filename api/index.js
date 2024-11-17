@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 require('dotenv').config();
 const User = require("./models/User.js")
+const Place = require("./models/place.js")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const cookieParser = require('cookie-parser');
@@ -74,6 +75,7 @@ app.get("/profile", (req, res) => {
   if (blue) {
     jwt.verify(blue, jwtAccess, {}, async (err, user) => {
       if (err) throw err;
+      //console.log(user)
       const { name, email, _id } = await User.findById(user.id)
       res.json({ name, email, _id })
     })
@@ -118,6 +120,83 @@ app.post("/upload", photosMiddleWare.array("photos", 100), (req, res) => {
   }
   //res.json(req.files)
   res.json(uploadedFiles)
+})
+
+app.post("/places", (req, res) => {
+  const { blue } = req.cookies
+  const { title,
+    address,
+    addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests } = req.body
+
+  jwt.verify(blue, jwtAccess, {}, async (err, user) => {
+    if (err) throw err;
+    const placeDoc = await Place.create({
+      owner: user.id,
+      title,
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests
+    })
+    res.json({ placeDoc })
+  })
+})
+
+app.get("/places", (req, res) => {
+  const { blue } = req.cookies
+  jwt.verify(blue, jwtAccess, {}, async (err, user) => {
+    //console.log(user)
+    const { id } = user
+    res.json(await Place.find({ owner: id }))
+  })
+})
+
+app.get("/places/:id", async (req, res) => {
+  const { id } = req.params
+  res.json(await Place.findById(id))
+})
+
+app.put("/updatePlaces", async (req, res) => {
+  const { blue } = req.cookies
+  const { id, title,
+    address,
+    addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests } = req.body
+
+  jwt.verify(blue, jwtAccess, {}, async (err, user) => {
+    if (err) throw err
+    const placeDoc = await Place.findById(id)
+    if (user.id === placeDoc.owner.toString()) {
+      placeDoc.set({
+        title,
+        address,
+        addedPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests
+      })
+      placeDoc.save()
+      res.json("ok")
+    }
+  })
 })
 
 app.listen(4000)

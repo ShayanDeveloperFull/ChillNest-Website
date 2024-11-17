@@ -5,12 +5,12 @@ const placeSchema = new Schema({
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   title: String,
   address: String,
-  photos: [String],
+  addedPhotos: [String],
   description: String,
-  perks: String,
+  perks: [String],
   extraInfo: String,
-  checkIn: Number,
-  checkOut: Number,
+  checkIn: String,
+  checkOut: String,
   maxGuests: Number
 })
 
