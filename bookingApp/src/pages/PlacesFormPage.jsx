@@ -145,16 +145,15 @@ export default function PlacesFormPage() {
           </button>
         </div>
 
-        <div className="grid gap-3 grid-cols-3 mt-2 md:grid-cols-4 lg:grid-cols-6">
+        <div className="grid gap-3 grid-cols-3 mt-2 md:grid-cols-4 lg:grid-cols-6 grid-a">
           {addedPhotos.length > 0 &&
             addedPhotos.map((link, idx) => (
-              <div className="flex items-center justify-center" key={idx}>
-                <img
-                  className="rounded-2xl"
-                  src={`http://localhost:4000/uploads/${link}`}
-                  alt=""
-                />
-              </div>
+              <img
+                className="rounded-2xl object-fill"
+                src={`http://localhost:4000/uploads/${link}`}
+                alt=""
+                key={idx}
+              />
             ))}
 
           {/* Photo File Upload */}

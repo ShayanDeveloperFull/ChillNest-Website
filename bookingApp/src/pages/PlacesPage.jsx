@@ -33,7 +33,7 @@ export default function PlacesPage() {
                 <div className="w-32 h-32 bg-gray-300 grow-0 shrink-0">
                   {place.addedPhotos.length > 0 && (
                     <img
-                      className="object-cover"
+                      className="h-full"
                       src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
                       alt=""
                     />
