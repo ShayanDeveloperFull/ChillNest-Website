@@ -7,6 +7,8 @@ const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const cookieParser = require('cookie-parser');
 const imageDownloader = require("image-downloader")
+const validUrl = require("valid-url");
+
 const multer = require("multer")
 const fs = require("fs")
 
@@ -93,8 +95,14 @@ app.post("/upload-by-link", async (req, res) => {
   const { photoLink } = req.body
   //console.log(photoLink)
 
+  // Validate if `photoLink` is present.
   if (!photoLink) {
     return res.status(400).json("Image Address Is Required");
+  }
+
+  // Validate if `photoLink` is a valid URL
+  if (!validUrl.isUri(photoLink)) {
+    return res.status(400).json("Invalid URL provided");
   }
 
   const newName = "photo" + Date.now() + ".jpg"

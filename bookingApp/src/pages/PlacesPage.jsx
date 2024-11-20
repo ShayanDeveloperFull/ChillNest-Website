@@ -30,10 +30,10 @@ export default function PlacesPage() {
                 className="flex cursor-pointer border bg-gray-100 p-2 rounded-2xl gap-2"
                 key={idx}
               >
-                <div className="w-32 h-32 bg-gray-300 grow-0 shrink-0">
+                <div className="w-60 h-30 bg-gray-300 grow-0 shrink-0">
                   {place.addedPhotos.length > 0 && (
                     <img
-                      className="h-full"
+                      className="object-fill"
                       src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
                       alt=""
                     />

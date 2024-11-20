@@ -28,10 +28,10 @@ export default function AccountNav() {
       <Link className={accountClasses("profile")} to={"/account"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
+          fill={pathname === "/account" ? "yellow" : "none"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="currentColor"
+          stroke={pathname === "/account" ? "yellow" : "currentColor"}
           className="size-6"
         >
           <path
@@ -45,10 +45,10 @@ export default function AccountNav() {
       <Link className={accountClasses("bookings")} to={"/account/bookings"}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
+          fill={pathname === "/account" ? "red" : "none"}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="currentColor"
+          stroke={pathname === "/account" ? "white" : "currentColor"}
           className="size-6"
         >
           <path
@@ -65,7 +65,7 @@ export default function AccountNav() {
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke="currentColor"
+          stroke={pathname === "/account/places" ? "red" : "currentColor"}
           className="size-6"
         >
           <path
