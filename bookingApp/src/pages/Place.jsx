@@ -36,7 +36,7 @@ export default function PlacePage() {
               {place.addedPhotos.length > 0 && (
                 <div>
                   <img
-                    className="aspect-square object-cover"
+                    className="aspect-square object-cover h-[650px] w-full"
                     src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
                     alt=""
                   />
@@ -46,7 +46,7 @@ export default function PlacePage() {
             <div className="grid">
               {place.addedPhotos.length > 0 && (
                 <img
-                  className="aspect-square object-cover"
+                  className="aspect-square object-cover h-[300px] w-full"
                   src={`http://localhost:4000/uploads/${place.addedPhotos[1]}`}
                   alt=""
                 />
@@ -54,7 +54,7 @@ export default function PlacePage() {
               <div className="overflow-hidden">
                 {place.addedPhotos.length > 0 && (
                   <img
-                    className="aspect-square object-cover relative top-2"
+                    className="aspect-square object-cover relative top-2 h-[350px] w-full"
                     src={`http://localhost:4000/uploads/${place.addedPhotos[2]}`}
                     alt=""
                   />

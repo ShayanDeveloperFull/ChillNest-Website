@@ -162,7 +162,7 @@ export default function PlacesFormPage() {
             addedPhotos.map((link, idx) => (
               <div className="relative" key={idx}>
                 <img
-                  className="w-full h-60 object-cover rounded-xl"
+                  className="aspect-square w-full object-cover rounded-xl"
                   src={`http://localhost:4000/uploads/${link}`}
                   alt=""
                 />
@@ -215,7 +215,7 @@ export default function PlacesFormPage() {
 
           {/* Photo File Upload */}
 
-          <label className="group cursor-pointer flex items-center justify-center border bg-transparent rounded-2xl p-8 text-2xl text-gray-600 hover:shadow-[0_0_10px_rgba(0,0,255,0.5)] transition-shadow duration-300">
+          <label className=" aspect-square group cursor-pointer flex items-center justify-center border bg-transparent rounded-2xl p-8 text-2xl text-gray-600 hover:shadow-[0_0_10px_rgba(0,0,255,0.5)] transition-shadow duration-300">
             <input
               type="file"
               className="hidden"
