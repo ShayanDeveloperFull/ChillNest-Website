@@ -140,7 +140,8 @@ app.post("/places", (req, res) => {
     extraInfo,
     checkIn,
     checkOut,
-    maxGuests } = req.body
+    maxGuests,
+    price } = req.body
 
   jwt.verify(blue, jwtAccess, {}, async (err, user) => {
     if (err) throw err;
@@ -154,13 +155,14 @@ app.post("/places", (req, res) => {
       extraInfo,
       checkIn,
       checkOut,
-      maxGuests
+      maxGuests,
+      price
     })
     res.json({ placeDoc })
   })
 })
 
-app.get("/places", (req, res) => {
+app.get("/user-places", (req, res) => {
   const { blue } = req.cookies
   jwt.verify(blue, jwtAccess, {}, async (err, user) => {
     //console.log(user)
@@ -184,7 +186,7 @@ app.put("/updatePlaces", async (req, res) => {
     extraInfo,
     checkIn,
     checkOut,
-    maxGuests } = req.body
+    maxGuests, price } = req.body
 
   jwt.verify(blue, jwtAccess, {}, async (err, user) => {
     if (err) throw err
@@ -199,12 +201,17 @@ app.put("/updatePlaces", async (req, res) => {
         extraInfo,
         checkIn,
         checkOut,
-        maxGuests
+        maxGuests,
+        price
       })
       placeDoc.save()
       res.json("ok")
     }
   })
+})
+
+app.get("/places", async (req, res) => {
+  res.json(await Place.find())
 })
 
 app.listen(4000)

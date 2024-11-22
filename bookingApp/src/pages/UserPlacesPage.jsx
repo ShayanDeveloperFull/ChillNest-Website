@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import AccountNav from "../components/AccountNav";
 
-export default function PlacesPage() {
+export default function UserPlacesPage() {
   const [places, setPlaces] = useState([]);
 
   useEffect(() => {
-    axios.get("/places").then(({ data }) => {
+    axios.get("/user-places").then(({ data }) => {
       setPlaces(data);
     });
   }, []);
@@ -30,10 +30,10 @@ export default function PlacesPage() {
                 className="flex cursor-pointer border bg-gray-100 p-2 rounded-2xl gap-2"
                 key={idx}
               >
-                <div className="w-60 h-30 bg-gray-300 grow-0 shrink-0">
+                <div className="w-60 bg-gray-300 grow-0 shrink-0">
                   {place.addedPhotos.length > 0 && (
                     <img
-                      className="object-fill"
+                      className="aspect-square object-cover"
                       src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
                       alt=""
                     />

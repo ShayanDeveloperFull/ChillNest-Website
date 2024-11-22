@@ -5,7 +5,7 @@ import { useContext } from "react";
 export default function Header() {
   const { user } = useContext(UserContext);
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-blue-800">
+    <div className="bg-gradient-to-r from-blue-500 to-blue-800 rounded-2xl">
       <header className="flex justify-between items-center px-8 py-4 m-0">
         {/* Logo Section */}
         <Link to={"/"} className="flex gap-1 items-center">
