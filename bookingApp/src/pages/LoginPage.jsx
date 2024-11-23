@@ -8,6 +8,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const { setUser } = useContext(UserContext);
+  const [failLogin, setFailLogin] = useState("");
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -19,7 +20,11 @@ export default function LoginPage() {
       setRedirect(true);
     } catch (err) {
       console.log(err);
-      alert("Login Failed");
+      if (err.response.status === 422) {
+        setFailLogin(err.response.data);
+      } else {
+        setFailLogin(err.response.data);
+      }
     }
   }
 
@@ -52,8 +57,23 @@ export default function LoginPage() {
             </Link>
           </div>
         </form>
-
-        <div className="mt-4"></div>
+        {failLogin && (
+          <div className="mt-2 font-bold text-center text-red-500">
+            {failLogin === "This Email Address Has Not Been Registered" ? (
+              <>
+                {failLogin}{" "}
+                <Link
+                  className="underline text-blue-500 hover:text-gray-500"
+                  to="/register"
+                >
+                  Click here
+                </Link>
+              </>
+            ) : (
+              failLogin
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

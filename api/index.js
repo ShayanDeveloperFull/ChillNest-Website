@@ -67,7 +67,7 @@ app.post('/login', async (req, res) => {
       res.status(422).json("Password Does Not Match")
     }
   } else {
-    res.status(404).json("User Is Not Found")
+    res.status(404).json("This Email Address Has Not Been Registered")
   }
 })
 
