@@ -9,7 +9,7 @@ import UserContextProvider from "./userContext";
 import AccountPage from "./pages/AccountPage";
 import PlacesPage from "./pages/UserPlacesPage";
 import PlacesFormPage from "./pages/PlacesFormPage";
-import PlacePage from "./pages/Place";
+import PlacePage from "./pages/PlacePage";
 
 axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
