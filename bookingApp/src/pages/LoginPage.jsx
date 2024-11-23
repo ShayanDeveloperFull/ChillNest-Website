@@ -20,7 +20,7 @@ export default function LoginPage() {
       setRedirect(true);
     } catch (err) {
       console.log(err);
-      if (err.response.status === 422) {
+      if (err.response.status === 404) {
         setFailLogin(err.response.data);
       } else {
         setFailLogin(err.response.data);
