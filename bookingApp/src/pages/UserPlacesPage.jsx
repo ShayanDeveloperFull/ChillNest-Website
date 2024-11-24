@@ -31,17 +31,17 @@ export default function UserPlacesPage() {
           {places.length > 0 &&
             places.map((place, idx) => (
               <div
-                className="relative flex cursor-pointer border bg-gray-100 p-2  mb-2"
+                className="relative flex cursor-pointer border rounded-md bg-gray-100 p-2 mb-2 hover:bg-gray-200 transition-all duration-500 ease-in-out"
                 key={idx}
               >
                 <Link
                   to={"/account/places/" + place._id}
                   className="flex flex-grow"
                 >
-                  <div className="w-60 bg-gray-300 grow-0 shrink-0">
+                  <div className="w-60">
                     {place.addedPhotos.length > 0 && (
                       <img
-                        className="aspect-square object-cover rounded-lg"
+                        className="aspect-square object-cover "
                         src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
                         alt=""
                       />
@@ -54,7 +54,7 @@ export default function UserPlacesPage() {
                 </Link>
                 <button
                   onClick={() => deletePlace(place._id)}
-                  className="absolute top-2 right-2 bg-red-700 text-white font-bold px-3 py-1 rounded-full"
+                  className="absolute top-2 right-2 bg-red-700 text-white font-bold px-3 py-1 rounded-full  hover:bg-white hover:text-red-700 border border-red-700 transition-all duration-200 ease-in-out"
                 >
                   X
                 </button>
