@@ -72,6 +72,11 @@ export default function PlacesFormPage() {
   async function savePlace(e) {
     e.preventDefault();
 
+    if (addedPhotos.length === 0) {
+      alert("Please upload at least one photo before saving.");
+      return;
+    }
+
     if (id) {
       await axios.put("/updatePlaces", {
         id,
@@ -152,6 +157,7 @@ export default function PlacesFormPage() {
           <button
             onClick={addPhotoButton}
             className=" bg-custom-blue w-28 text-white font-semibold  rounded-2xl whitespace-nowrap"
+            required
           >
             Add Photo
           </button>

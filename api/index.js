@@ -171,6 +171,14 @@ app.get("/user-places", (req, res) => {
   })
 })
 
+app.delete("/user-places/:id", async (req, res) => {
+  const { id } = req.params;
+
+  await Place.findByIdAndDelete(id);
+  res.status(200).json("Place deleted successfully");
+
+});
+
 app.get("/places/:id", async (req, res) => {
   const { id } = req.params
   res.json(await Place.findById(id))
@@ -213,5 +221,7 @@ app.put("/updatePlaces", async (req, res) => {
 app.get("/places", async (req, res) => {
   res.json(await Place.find())
 })
+
+
 
 app.listen(4000)

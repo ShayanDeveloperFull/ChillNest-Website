@@ -56,7 +56,7 @@ export default function PlacePage() {
                   <img
                     className="aspect-square object-cover relative top-2 h-[400px] w-full"
                     src={`http://localhost:4000/uploads/${place.addedPhotos[2]}`}
-                    alt=""
+                    alt="Nudes??"
                   />
                 )}
               </div>

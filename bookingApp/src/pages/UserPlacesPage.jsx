@@ -12,6 +12,11 @@ export default function UserPlacesPage() {
     });
   }, []);
 
+  async function deletePlace(placeId) {
+    await axios.delete(`/user-places/${placeId}`);
+    setPlaces([...places.filter((place) => place._id !== placeId)]);
+  }
+
   return (
     <div>
       <AccountNav />
@@ -25,25 +30,35 @@ export default function UserPlacesPage() {
         <div className="mt-4">
           {places.length > 0 &&
             places.map((place, idx) => (
-              <Link
-                to={"/account/places/" + place._id}
-                className="flex cursor-pointer border bg-gray-100 p-2 rounded-2xl gap-2"
+              <div
+                className="relative flex cursor-pointer border bg-gray-100 p-2  mb-2"
                 key={idx}
               >
-                <div className="w-60 bg-gray-300 grow-0 shrink-0">
-                  {place.addedPhotos.length > 0 && (
-                    <img
-                      className="aspect-square object-cover"
-                      src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
-                      alt=""
-                    />
-                  )}
-                </div>
-                <div className="grow-0 shrink">
-                  <h2 className="text-xl">{place.title}</h2>
-                  <p className="text-sm mt-2 ">{place.description}</p>
-                </div>
-              </Link>
+                <Link
+                  to={"/account/places/" + place._id}
+                  className="flex flex-grow"
+                >
+                  <div className="w-60 bg-gray-300 grow-0 shrink-0">
+                    {place.addedPhotos.length > 0 && (
+                      <img
+                        className="aspect-square object-cover rounded-lg"
+                        src={`http://localhost:4000/uploads/${place.addedPhotos[0]}`}
+                        alt=""
+                      />
+                    )}
+                  </div>
+                  <div className="grow-0 shrink">
+                    <h2 className="text-xl">{place.title}</h2>
+                    <p className="text-sm mt-2 ">{place.description}</p>
+                  </div>
+                </Link>
+                <button
+                  onClick={() => deletePlace(place._id)}
+                  className="absolute top-2 right-2 bg-red-700 text-white font-bold px-3 py-1 rounded-full"
+                >
+                  X
+                </button>
+              </div>
             ))}
         </div>
       </div>
