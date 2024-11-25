@@ -31,7 +31,7 @@ export default function UserPlacesPage() {
           {places.length > 0 &&
             places.map((place, idx) => (
               <div
-                className="relative flex cursor-pointer border rounded-md bg-gray-100 p-2 mb-2 hover:bg-gray-200 transition-all duration-500 ease-in-out"
+                className="relative flex cursor-pointer border rounded-md bg-gray-100 p-2 mb-2 hover:bg-gray-300 transition-all duration-500 ease-in-out"
                 key={idx}
               >
                 <Link

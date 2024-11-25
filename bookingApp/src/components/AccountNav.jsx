@@ -32,7 +32,7 @@ export default function AccountNav() {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke={pathname === "/account" ? "yellow" : "currentColor"}
-          className="size-6"
+          className="size-6 "
         >
           <path
             strokeLinecap="round"

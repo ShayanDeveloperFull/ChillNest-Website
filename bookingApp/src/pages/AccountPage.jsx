@@ -43,6 +43,7 @@ export default function AccountPage() {
           </button>
         </div>
       )}
+
       {profilePage === "places" && <PlacesPage />}
     </div>
   );

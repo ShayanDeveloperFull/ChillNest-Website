@@ -120,6 +120,7 @@ export default function PlacesFormPage() {
   if (redirect) {
     return <Navigate to={"/account/places"} />;
   }
+
   return (
     <div>
       <form onSubmit={savePlace}>
@@ -323,12 +324,6 @@ export default function PlacesFormPage() {
           value={extraInfo}
           onChange={(e) => setExtraInfo(e.target.value)}
         />
-
-        {/* CheckIn CheckOut Guests Section */}
-        <h2 className="text-xl mt-4">checkIn & checkOut, Max Guests</h2>
-        <p className="text-gray-500 text-sm">
-          -Add the checkIn time and checkOut time and the number of guests.
-        </p>
 
         <div className="grid gap-2 sm:grid-cols-3">
           {/* checkIn Section */}

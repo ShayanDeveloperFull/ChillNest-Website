@@ -17,10 +17,10 @@ export default function RegisterPage() {
         name,
       });
       alert("Registration Successful!");
+      setRedirect("/login");
     } catch (err) {
       alert("Registration Failed");
     }
-    setRedirect("/login");
   }
 
   if (redirect) {
