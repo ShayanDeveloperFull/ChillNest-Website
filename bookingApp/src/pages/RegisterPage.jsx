@@ -50,7 +50,9 @@ export default function RegisterPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary">Register</button>
+          <button className="primary transform active:scale-95 transition-transform duration-150">
+            Register
+          </button>
           <div className="text-center py-2 text-gray-500">
             Already Have An Account?{" "}
             <Link className="underline text-black" to="/login">

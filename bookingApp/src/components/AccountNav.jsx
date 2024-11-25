@@ -24,15 +24,24 @@ export default function AccountNav() {
   }
 
   return (
-    <nav className="w-full flex justify-center mt-6 gap-2 mb-10 ">
-      <Link className={accountClasses("profile")} to={"/account"}>
+    <nav className="w-full flex justify-center mt-6 gap-2 mb-10">
+      <Link
+        className={`${accountClasses("profile")}  ${
+          pathname === "/account" ? "font-semibold" : "hover:bg-blue-200"
+        } transition-colors duration-300 group`}
+        to="/account"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill={pathname === "/account" ? "yellow" : "none"}
+          fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke={pathname === "/account" ? "yellow" : "currentColor"}
-          className="size-6 "
+          stroke="currentColor"
+          className={`size-6 ${
+            pathname === "/account"
+              ? "fill-red-600 stroke-red-600"
+              : "group-hover:fill-red-300"
+          }`}
         >
           <path
             strokeLinecap="round"
@@ -42,14 +51,26 @@ export default function AccountNav() {
         </svg>
         My Profile
       </Link>
-      <Link className={accountClasses("bookings")} to={"/account/bookings"}>
+      <Link
+        className={`${accountClasses("bookings")} 
+        ${
+          pathname === "/account/bookings"
+            ? "font-semibold"
+            : "hover:bg-blue-200"
+        } transition-colors duration-300 group`}
+        to={"/account/bookings"}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill={pathname === "/account" ? "red" : "none"}
+          fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke={pathname === "/account" ? "white" : "currentColor"}
-          className="size-6"
+          stroke="currentColor"
+          className={`size-6 ${
+            pathname === "/account/bookings"
+              ? "fill-yellow-500 stroke-black"
+              : "group-hover:fill-yellow-300"
+          }`}
         >
           <path
             strokeLinecap="round"
@@ -59,14 +80,24 @@ export default function AccountNav() {
         </svg>
         My Bookings
       </Link>
-      <Link className={accountClasses("places")} to={"/account/places"}>
+      <Link
+        className={`${accountClasses("places")} 
+        ${
+          pathname === "/account/places" ? "font-semibold" : "hover:bg-blue-200"
+        } transition-colors duration-300 group `}
+        to={"/account/places"}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={1.5}
-          stroke={pathname === "/account/places" ? "red" : "currentColor"}
-          className="size-6"
+          stroke="currentColor"
+          className={`size-6 ${
+            pathname === "/account/places"
+              ? "stroke-red-600"
+              : "group-hover:stroke-red-300"
+          }`}
         >
           <path
             strokeLinecap="round"

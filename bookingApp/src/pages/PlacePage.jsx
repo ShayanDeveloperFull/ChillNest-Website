@@ -99,7 +99,7 @@ export default function PlacePage() {
                 </div>
               </div>
               <button
-                className="flex absolute bottom-2 right-2 py-2 px-4 bg-gray-100 rounded-2xl border hover:bg-yellow-100 "
+                className="flex absolute bottom-2 right-2 py-2 px-4 bg-gray-100 rounded-2xl border hover:bg-yellow-100 transform active:scale-95 transition-transform duration-150"
                 onClick={() => setShowAllPhotos(true)}
               >
                 <img

@@ -22,7 +22,7 @@ export default function UserPlacesPage() {
       <AccountNav />
       <div className="text-center">
         <Link
-          className="bg-blue-600 text-white px-2 py-2 rounded-full"
+          className="bg-blue-600 text-white px-2 py-2 rounded-full inline-block transform active:scale-95 transition-transform duration-150 "
           to={"/account/places/new"}
         >
           {"\u002B"} Add new place
@@ -47,8 +47,8 @@ export default function UserPlacesPage() {
                       />
                     )}
                   </div>
-                  <div className="grow-0 shrink">
-                    <h2 className="text-xl">{place.title}</h2>
+                  <div className="flex flex-col items-start ml-2  w-full">
+                    <h2 className="font-semibold ">{place.title}</h2>
                     <p className="text-sm mt-2 ">{place.description}</p>
                   </div>
                 </Link>

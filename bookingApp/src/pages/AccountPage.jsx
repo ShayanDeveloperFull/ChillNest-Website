@@ -38,7 +38,10 @@ export default function AccountPage() {
       {profilePage === "profile" && (
         <div className="text-center max-w-lg mx-auto">
           Logged in As {user.name} ({user.email}) <br />
-          <button onClick={logout} className="primary max-w-sm mt-2">
+          <button
+            onClick={logout}
+            className="primary max-w-sm mt-2 transform active:scale-95 transition-transform duration-150"
+          >
             Logout
           </button>
         </div>
