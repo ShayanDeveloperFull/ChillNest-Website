@@ -22,7 +22,7 @@ export default function PlacePage() {
     return (
       <div className="absolute inset-0  text-white min-h-screen">
         <div className="bg-black p-8 grid gap-4">
-          <h2 className="text-2xl">Photos of {place.title}</h2>
+          <h2 className="text-2xl ">Photos of {place.title}</h2>
           <button
             onClick={() => {
               setShowAllPhotos(false);

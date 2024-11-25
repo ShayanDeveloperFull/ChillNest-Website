@@ -8,7 +8,10 @@ export default function Header() {
     <div className="bg-gradient-to-r from-blue-500 to-blue-800 rounded-2xl ">
       <header className="flex justify-between items-center px-8 py-4 ">
         {/* Logo Section */}
-        <Link to={"/"} className="flex gap-1 items-center">
+        <Link
+          to={"/"}
+          className="flex gap-1 items-center border-2 border-transparent hover:border-white p-1 "
+        >
           <div className="rounded-lg bg-blue-300">
             <img
               src="/images/WebLogo.jpg"
