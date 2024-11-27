@@ -20,14 +20,14 @@ export default function PlacePage() {
 
   if (showAllPhotos) {
     return (
-      <div className="absolute inset-0  text-white min-h-screen">
+      <div className="absolute inset-0 text-white">
         <div className="bg-black p-8 grid gap-4">
           <h2 className="text-2xl ">Photos of {place.title}</h2>
           <button
             onClick={() => {
               setShowAllPhotos(false);
             }}
-            className="fixed top-2 right-3 bg-red-700 text-white font-bold px-3 py-1 rounded-full hover:bg-white hover:text-red-700 border border-red-700 transition-all duration-200 ease-in-out"
+            className="fixed top-2 right-3 bg-red-700 text-white font-bold px-3 py-1 rounded-full hover:bg-white hover:text-red-700 border border-red-700 transition-all duration-200 ease-in-out active:scale-95"
           >
             X
           </button>
@@ -47,7 +47,7 @@ export default function PlacePage() {
   }
 
   return (
-    <div className="mt-5 bg-gray-100 -mx-8 p-8  ">
+    <div className="mt-5 bg-gray-100 -mx-8 p-8">
       {loading ? (
         <div>Loading...</div>
       ) : (
@@ -60,7 +60,7 @@ export default function PlacePage() {
           >
             <div className="flex">
               <img
-                className="flex w-10 h-full mr-2 "
+                className="flex w-10 h-full mr-2"
                 src="/images/mapIcon.jpg"
                 alt=""
               />
@@ -111,8 +111,76 @@ export default function PlacePage() {
               </button>
             </div>
           </div>
-          <h2 className="mt-4 font-semibold text-2xl">Description</h2>
-          {place.description}
+
+          {/* Description */}
+          <div className="my-6 p-4 bg-white rounded-2xl shadow-lg">
+            <h2 className="font-semibold text-2xl mb-2 border-b pb-2">
+              Description
+            </h2>
+            <p className="text-gray-700 text-lg">{place.description}</p>
+          </div>
+
+          {/* Grid Layout for Info */}
+          <div className="grid grid-cols-2 gap-6 my-6">
+            {/* Left Section */}
+            <div className="p-6 bg-white rounded-2xl shadow-lg">
+              <div className="mb-4">
+                <span className="font-bold text-lg">Check-In:</span>
+                <span className="ml-7 text-gray-600">⌚ {place.checkIn}</span>
+              </div>
+              <div className="mb-4">
+                <span className="font-bold text-lg">Check-Out:</span>
+                <span className="ml-4 text-gray-600">⌚ {place.checkOut}</span>
+              </div>
+              <div className="mb-4">
+                <span className="font-bold text-lg">Guest Limit:</span>
+                <span className="ml-2 text-gray-600">🧑 {place.maxGuests}</span>
+              </div>
+              <div className="mb-4">
+                <span className="font-bold text-lg">Perks:</span>
+                <ul className="list-disc ml-6 text-gray-600">
+                  {place.perks &&
+                    place.perks.map((perk, idx) => (
+                      <li key={idx} className="mb-1">
+                        {perk}
+                      </li>
+                    ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-xl mb-2">Extra Info:</h3>
+                <p className="text-gray-600">{place.extraInfo}</p>
+              </div>
+            </div>
+
+            {/* Right Section */}
+            <div className="p-6 bg-white rounded-2xl shadow-lg flex flex-col justify-between">
+              <div className="text-4xl font-bold text-gray-800">
+                ${place.price}/night 🌙
+              </div>
+              <label className="text-sm font-normal mt-4">
+                <span className="font-semibold">Select Check-In:</span>
+                <input
+                  type="date"
+                  id="checkInDate"
+                  name="checkInDate"
+                  className="w-full p-3 rounded-lg border border-gray-300 "
+                />
+              </label>
+              <label className="text-sm  mt-4">
+                <span className="font-semibold">Select Check-In:</span>
+                <input
+                  type="date"
+                  id="checkOutDate"
+                  name="checkOutDate"
+                  className="w-full p-3 rounded-lg border border-gray-300"
+                />
+              </label>
+            </div>
+          </div>
+          <button className="primary transition-all duration-200 ease-in-out active:scale-95">
+            Book Now
+          </button>
         </>
       )}
     </div>

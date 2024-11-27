@@ -36,9 +36,9 @@ export default function UserPlacesPage() {
               >
                 <Link
                   to={"/account/places/" + place._id}
-                  className="flex flex-grow"
+                  className="flex flex-grow "
                 >
-                  <div className="w-60">
+                  <div className="w-60 ">
                     {place.addedPhotos.length > 0 && (
                       <img
                         className="aspect-square object-cover "
@@ -47,14 +47,14 @@ export default function UserPlacesPage() {
                       />
                     )}
                   </div>
-                  <div className="flex flex-col items-start ml-2  w-full">
+                  <div className="flex flex-col items-start ml-2  w-full ">
                     <h2 className="font-semibold ">{place.title}</h2>
                     <p className="text-sm mt-2 ">{place.description}</p>
                   </div>
                 </Link>
                 <button
                   onClick={() => deletePlace(place._id)}
-                  className="absolute top-2 right-2 bg-red-700 text-white font-bold px-3 py-1 rounded-full  hover:bg-white hover:text-red-700 border border-red-700 transition-all duration-200 ease-in-out"
+                  className="absolute top-2 right-2 bg-red-700 text-white font-bold px-3 py-1 rounded-full hover:bg-white hover:text-red-700 border border-red-700 transition-all duration-200 ease-in-out active:scale-95"
                 >
                   X
                 </button>

@@ -20,7 +20,7 @@ export default function MainPage() {
             {place.addedPhotos.length > 0 && (
               <div className="flex ">
                 <img
-                  className="mb-2 object-cover aspect-square rounded-xl"
+                  className="mb-2 object-cover aspect-square rounded-xl "
                   src={`http://localhost:4000/uploads/` + place.addedPhotos[0]}
                   alt=""
                 />

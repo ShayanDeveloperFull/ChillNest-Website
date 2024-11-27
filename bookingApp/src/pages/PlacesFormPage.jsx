@@ -157,7 +157,7 @@ export default function PlacesFormPage() {
           />
           <button
             onClick={addPhotoButton}
-            className=" bg-custom-blue w-28 text-white font-semibold  rounded-2xl whitespace-nowrap"
+            className=" bg-custom-blue w-28 text-white font-semibold  rounded-2xl whitespace-nowrap transform active:scale-95 transition-transform duration-150"
             required
           >
             Add Photo
@@ -265,41 +265,41 @@ export default function PlacesFormPage() {
             <img className="h-10 w-auto" src="/images/wifiSymbol.webp" alt="" />
             <input
               type="checkbox"
-              checked={perks.includes("wifi")}
-              name="wifi"
+              checked={perks.includes("WIFI")}
+              name="WIFI"
               onChange={(e) => handleCheckBox(e)}
             />
-            <span>Wifi</span>
+            <p>WIFI</p>
           </label>
           <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
             <img className="h-10 w-auto" src="/images/parkingIcon.jpg" alt="" />
             <input
               type="checkbox"
-              checked={perks.includes("parking")}
-              name="parking"
+              checked={perks.includes("Parking")}
+              name="Parking"
               onChange={(e) => handleCheckBox(e)}
             />
-            <span>Parking </span>
+            <p>Parking</p>
           </label>
           <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
             <img className="h-10 w-auto" src="/images/petIcon.jpg" alt="" />
             <input
               type="checkbox"
-              checked={perks.includes("pets")}
-              name="pets"
+              checked={perks.includes("Pets")}
+              name="Pets"
               onChange={(e) => handleCheckBox(e)}
             />
-            <span>Pets</span>
+            <p>Pets</p>
           </label>
-          <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
+          <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer ">
             <img className="h-10 w-auto" src="/images/hotTubIcon.jpg" alt="" />
             <input
               type="checkbox"
-              checked={perks.includes("hotTub")}
-              name="hotTub"
+              checked={perks.includes("Hot Tub")}
+              name="Hot Tub"
               onChange={(e) => handleCheckBox(e)}
             />
-            <span>Hot Tub</span>
+            <p>Hot Tub</p>
           </label>
           <label className="border p-4 whitespace-nowrap flex gap-2 items-center cursor-pointer">
             <img
@@ -309,11 +309,11 @@ export default function PlacesFormPage() {
             />
             <input
               type="checkbox"
-              checked={perks.includes("TVStreamingServices")}
-              name="TVStreamingServices"
+              checked={perks.includes("TV Streaming Services")}
+              name="TV Streaming Services"
               onChange={(e) => handleCheckBox(e)}
             />
-            <span>TV Streaming Services</span>
+            <p>TV Streaming Services</p>
           </label>
         </div>
 
@@ -366,7 +366,9 @@ export default function PlacesFormPage() {
         </div>
         {/* Upload Button*/}
         <div>
-          <button className="primary">Save</button>
+          <button className="primary transform active:scale-95 transition-transform duration-150">
+            Save
+          </button>
         </div>
       </form>
     </div>
