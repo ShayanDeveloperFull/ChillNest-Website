@@ -35,7 +35,7 @@ export default function PlacePage() {
             place.addedPhotos.map((photo) => (
               <div key={photo} className="flex justify-center">
                 <img
-                  className="w-[1500px] rounded-2xl"
+                  className="w-[1500px] rounded-2xl border border-yellow-400"
                   src={`http://localhost:4000/uploads/${photo}`}
                   alt=""
                 />
@@ -126,7 +126,7 @@ export default function PlacePage() {
             <div className="p-6 bg-white rounded-2xl shadow-lg">
               <div className="mb-4">
                 <span className="font-bold text-lg">Check-In:</span>
-                <span className="ml-7 text-gray-600">⌚ {place.checkIn}</span>
+                <span className="ml-8 text-gray-600">⌚ {place.checkIn}</span>
               </div>
               <div className="mb-4">
                 <span className="font-bold text-lg">Check-Out:</span>
