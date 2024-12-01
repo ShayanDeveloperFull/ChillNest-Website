@@ -55,8 +55,9 @@ export default function PlacePage() {
         <>
           <h1 className="text-3xl">{place.title}</h1>
           <a
-            href={"https://maps.google.com/?q=" + place.address}
+            href={`https://maps.google.com/?q=${place.address}`}
             target="_blank"
+            rel="noopener noreferrer"
             className="block font-semibold underline my-2"
           >
             <div className="flex">
@@ -121,14 +122,10 @@ export default function PlacePage() {
             <p className="text-gray-700 text-lg">{place.description}</p>
           </div>
 
-          {/* Dynamic Layout for Info */}
-          <div className={`flex gap-6 my-6`}>
+          {/* Grid Layout for Info */}
+          <div className="grid grid-cols-2 gap-6 my-6">
             {/* Left Section */}
-            <div
-              className={`p-6 bg-white rounded-2xl shadow-lg flex-1 ${
-                place.perks.length > 3 ? "max-w-[40%]" : "max-w-[30%]"
-              }`}
-            >
+            <div className="p-6 bg-white rounded-2xl shadow-lg">
               <div className="mb-4">
                 <span className="font-bold text-lg">Check-In:</span>
                 <span className="ml-8 text-gray-600">⌚ {place.checkIn}</span>
@@ -159,11 +156,8 @@ export default function PlacePage() {
             </div>
 
             {/* Right Section */}
-            <div className="flex-1">
-              <BookingSection place={place} />
-            </div>
+            <BookingSection place={place} />
           </div>
-
           <button className="primary h-15 transition-all duration-200 ease-in-out active:scale-95">
             Book Now
           </button>
