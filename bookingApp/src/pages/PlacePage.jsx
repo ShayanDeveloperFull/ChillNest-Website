@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import BookingSection from "../components/BookingSection";
 
 export default function PlacePage() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ export default function PlacePage() {
     return (
       <div className="absolute inset-0 text-white">
         <div className="bg-black p-8 grid gap-4">
-          <h2 className="text-2xl ">Photos of {place.title}</h2>
+          <h2 className="text-2xl">Photos of {place.title}</h2>
           <button
             onClick={() => {
               setShowAllPhotos(false);
@@ -93,7 +94,7 @@ export default function PlacePage() {
                     <img
                       className="aspect-square object-cover relative top-2 h-[400px] w-full rounded-r-3xl"
                       src={`http://localhost:4000/uploads/${place.addedPhotos[2]}`}
-                      alt="Nudes??"
+                      alt=""
                     />
                   )}
                 </div>
@@ -120,10 +121,14 @@ export default function PlacePage() {
             <p className="text-gray-700 text-lg">{place.description}</p>
           </div>
 
-          {/* Grid Layout for Info */}
-          <div className="grid grid-cols-2 gap-6 my-6">
+          {/* Dynamic Layout for Info */}
+          <div className={`flex gap-6 my-6`}>
             {/* Left Section */}
-            <div className="p-6 bg-white rounded-2xl shadow-lg">
+            <div
+              className={`p-6 bg-white rounded-2xl shadow-lg flex-1 ${
+                place.perks.length > 3 ? "max-w-[40%]" : "max-w-[30%]"
+              }`}
+            >
               <div className="mb-4">
                 <span className="font-bold text-lg">Check-In:</span>
                 <span className="ml-8 text-gray-600">⌚ {place.checkIn}</span>
@@ -154,31 +159,12 @@ export default function PlacePage() {
             </div>
 
             {/* Right Section */}
-            <div className="p-6 bg-white rounded-2xl shadow-lg flex flex-col justify-between">
-              <div className="text-4xl font-bold text-gray-800">
-                ${place.price}/night 🌙
-              </div>
-              <label className="text-sm font-normal mt-4">
-                <span className="font-semibold">Select Check-In:</span>
-                <input
-                  type="date"
-                  id="checkInDate"
-                  name="checkInDate"
-                  className="w-full p-3 rounded-lg border border-gray-300 "
-                />
-              </label>
-              <label className="text-sm  mt-4">
-                <span className="font-semibold">Select Check-In:</span>
-                <input
-                  type="date"
-                  id="checkOutDate"
-                  name="checkOutDate"
-                  className="w-full p-3 rounded-lg border border-gray-300"
-                />
-              </label>
+            <div className="flex-1">
+              <BookingSection place={place} />
             </div>
           </div>
-          <button className="primary transition-all duration-200 ease-in-out active:scale-95">
+
+          <button className="primary h-15 transition-all duration-200 ease-in-out active:scale-95">
             Book Now
           </button>
         </>
