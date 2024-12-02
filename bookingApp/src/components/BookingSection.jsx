@@ -16,26 +16,32 @@ export default function BookingSection({ place }) {
   }
 
   return (
-    <div className="p-6 bg-white rounded-2xl shadow-lg flex flex-col justify-between">
-      <div className="text-4xl font-bold text-gray-800">
+    <div className="p-6 bg-white text-black rounded-2xl shadow-lg flex flex-col justify-between">
+      <div className="text-4xl font-bold text-white-800">
         ${place.price}/night 🌙
       </div>
       <label className="text-sm font-normal mt-4">
-        <span className="font-semibold">Select Check-In:</span>
+        <span className="font-semibold">When Do You Want To Check-In?</span>
         <input
           type="date"
           value={checkInDate}
           onChange={(e) => setCheckInDate(e.target.value)}
-          className="w-full p-3 rounded-lg border border-gray-300 "
+          className="w-full p-3 rounded-lg border border-gray-300"
+          style={{
+            color: checkInDate ? "black" : "white",
+          }}
         />
       </label>
       <label className="text-sm  mt-4">
-        <span className="font-semibold">Select Check-In:</span>
+        <span className="font-semibold">When Do You Want To Check-Out:</span>
         <input
           type="date"
           value={checkOutDate}
           onChange={(e) => setCheckOutDate(e.target.value)}
           className="w-full p-3 rounded-lg border border-gray-300"
+          style={{
+            color: checkOutDate ? "black" : "white",
+          }}
         />
       </label>
       {numNight > 0 && (
@@ -47,6 +53,7 @@ export default function BookingSection({ place }) {
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full p-3 rounded-lg border border-gray-300"
+              style={{ color: name ? "black" : "white" }}
             />
           </label>
 
@@ -57,6 +64,7 @@ export default function BookingSection({ place }) {
               value={mobile}
               onChange={(e) => setMobile(e.target.value)}
               className="w-full p-3 rounded-lg border border-gray-300"
+              style={{ color: mobile ? "black" : "white" }}
             />
           </label>
         </div>

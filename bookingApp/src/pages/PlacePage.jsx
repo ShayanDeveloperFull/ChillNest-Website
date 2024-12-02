@@ -123,23 +123,31 @@ export default function PlacePage() {
           </div>
 
           {/* Grid Layout for Info */}
-          <div className="grid grid-cols-2 gap-6 my-6">
+          <div className="grid grid-cols-[auto_1fr] gap-6 my-6 ">
             {/* Left Section */}
             <div className="p-6 bg-white rounded-2xl shadow-lg">
               <div className="mb-4">
-                <span className="font-bold text-lg">Check-In:</span>
+                <span className="bg-yellow-200 px-2 font-bold text-lg">
+                  Check-In:
+                </span>
                 <span className="ml-8 text-gray-600">⌚ {place.checkIn}</span>
               </div>
               <div className="mb-4">
-                <span className="font-bold text-lg">Check-Out:</span>
+                <span className="bg-yellow-200 px-2 font-bold text-lg">
+                  Check-Out:
+                </span>
                 <span className="ml-4 text-gray-600">⌚ {place.checkOut}</span>
               </div>
               <div className="mb-4">
-                <span className="font-bold text-lg">Guest Limit:</span>
+                <span className="bg-yellow-200 px-2 font-bold text-lg">
+                  Guest Limit:
+                </span>
                 <span className="ml-2 text-gray-600">🧑 {place.maxGuests}</span>
               </div>
               <div className="mb-4">
-                <span className="font-bold text-lg">Perks:</span>
+                <span className="bg-yellow-200 px-2 font-bold text-lg">
+                  Perks:
+                </span>
                 <ul className="list-disc ml-6 text-gray-600">
                   {place.perks &&
                     place.perks.map((perk, idx) => (
@@ -150,15 +158,17 @@ export default function PlacePage() {
                 </ul>
               </div>
               <div>
-                <h3 className="font-semibold text-xl mb-2">Extra Info:</h3>
-                <p className="text-gray-600">{place.extraInfo}</p>
+                <span className="bg-yellow-200 px-2  font-semibold text-xl mb-2">
+                  Extra Info:
+                </span>
+                <p className="mt-1 text-gray-600">{place.extraInfo}</p>
               </div>
             </div>
 
             {/* Right Section */}
             <BookingSection place={place} />
           </div>
-          <button className="primary h-15 transition-all duration-200 ease-in-out active:scale-95">
+          <button className="primary max-h transition-all duration-200 ease-in-out active:scale-95">
             Book Now
           </button>
         </>
