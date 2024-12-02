@@ -18,7 +18,9 @@ export default function BookingSection({ place }) {
   return (
     <div className="p-6 bg-white text-black rounded-2xl shadow-lg flex flex-col justify-between">
       <div className="text-4xl font-bold text-white-800">
-        ${place.price}/night 🌙
+        <span className="bg-gray-100 p-2 rounded-lg">
+          ${place.price}/night 🌙
+        </span>
       </div>
       <label className="text-sm font-normal mt-4">
         <span className="font-semibold">When Do You Want To Check-In?</span>
