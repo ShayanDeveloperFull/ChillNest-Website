@@ -168,9 +168,6 @@ export default function PlacePage() {
             {/* Right Section */}
             <BookingSection place={place} />
           </div>
-          <button className="primary max-h transition-all duration-200 ease-in-out active:scale-95">
-            Book Now
-          </button>
         </>
       )}
     </div>

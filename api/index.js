@@ -3,6 +3,7 @@ const cors = require('cors')
 require('dotenv').config();
 const User = require("./models/User.js")
 const Place = require("./models/place.js")
+const Booking = require("./models/Booking.js")
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken")
 const cookieParser = require('cookie-parser');
@@ -221,5 +222,12 @@ app.put("/updatePlaces", async (req, res) => {
 app.get("/places", async (req, res) => {
   res.json(await Place.find())
 })
+
+app.post("/booking", async (req, res) => {
+  const { place, checkInDate, checkOutDate, name, mobile, price } = req.body;
+  const bookingDoc = await Booking.create({ place, checkInDate, checkOutDate, name, mobile, price });
+  res.json(bookingDoc);
+});
+
 
 app.listen(4000)
