@@ -29,7 +29,8 @@ app.use(cookieParser());
 const bcryptPassword = bcrypt.genSaltSync(10)
 const jwtAccess = process.env.JWT_SECRET
 
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const { userInfo } = require('os');
 mongoose.connect(process.env.MONGO_URL)
 
 
@@ -224,10 +225,34 @@ app.get("/places", async (req, res) => {
 })
 
 app.post("/booking", async (req, res) => {
+  const { blue } = req.cookies;
   const { place, checkInDate, checkOutDate, name, mobile, price } = req.body;
-  const bookingDoc = await Booking.create({ place, checkInDate, checkOutDate, name, mobile, price });
-  res.json(bookingDoc);
+
+  jwt.verify(blue, jwtAccess, {}, async (err, user) => {
+    if (err) throw err;
+
+    const bookingDoc = await Booking.create({
+      place,
+      user: user.id,
+      checkInDate,
+      checkOutDate,
+      name,
+      mobile,
+      price,
+    });
+
+
+    res.json(bookingDoc);
+  });
 });
 
+
+
+app.get("/bookings", async (req, res) => {
+  const { blue } = req.cookies
+  jwt.verify(blue, jwtAccess, {}, async (err, user) => {
+    res.json(await Booking.find({ user: user.id }))
+  })
+})
 
 app.listen(4000)

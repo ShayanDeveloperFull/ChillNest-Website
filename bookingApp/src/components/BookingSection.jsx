@@ -1,33 +1,15 @@
-import { useState } from "react";
-import { differenceInCalendarDays } from "date-fns";
-import axios from "axios";
-
-export default function BookingSection({ place }) {
-  const [checkInDate, setCheckInDate] = useState("");
-  const [checkOutDate, setCheckOutDate] = useState("");
-  const [name, setName] = useState("");
-  const [mobile, setMobile] = useState("");
-
-  let numNight = 0;
-  if (checkInDate && checkOutDate) {
-    numNight = differenceInCalendarDays(
-      new Date(checkOutDate),
-      new Date(checkInDate)
-    );
-  }
-
-  async function bookNow() {
-    const { data } = await axios.post("/booking", {
-      place: place._id,
-      checkInDate,
-      checkOutDate,
-      name,
-      mobile,
-      price: numNight * place.price,
-    });
-    console.log(data);
-  }
-
+export default function BookingSection({
+  place,
+  checkInDate,
+  checkOutDate,
+  name,
+  mobile,
+  setCheckInDate,
+  setCheckOutDate,
+  setName,
+  setMobile,
+  numNight,
+}) {
   return (
     <div className="p-6 bg-white text-black rounded-2xl shadow-lg flex flex-col justify-between">
       <div className="text-4xl font-bold text-white-800">
@@ -91,12 +73,6 @@ export default function BookingSection({ place }) {
           </span>
         )}
       </div>
-      <button
-        onClick={bookNow}
-        className="mt-5 font-semibold primary max-h transition-all duration-200 ease-in-out active:scale-95"
-      >
-        Book Now
-      </button>
     </div>
   );
 }

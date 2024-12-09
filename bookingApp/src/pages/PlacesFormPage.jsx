@@ -178,7 +178,7 @@ export default function PlacesFormPage() {
                   onClick={() => {
                     removePhoto(link);
                   }}
-                  className="absolute bottom-2 right-1 cursor-pointer text-white p-1 bg-black rounded-xl opacity-80"
+                  className="absolute bottom-2 right-1 cursor-pointer text-white p-1 bg-black rounded-xl opacity-80 transform active:scale-95 transition-transform duration-150"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -200,7 +200,7 @@ export default function PlacesFormPage() {
                   onClick={() => {
                     mainPhoto(link);
                   }}
-                  className="absolute top-2 left-1 cursor-pointer text-white p-1 bg-black rounded-xl "
+                  className="absolute top-2 left-1 cursor-pointer text-white p-1 bg-black rounded-xl  transform active:scale-95 transition-transform duration-150 "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -3,8 +3,9 @@ const { Schema } = mongoose;
 
 const bookingSchema = new Schema({
   place: { type: mongoose.Schema.Types.ObjectId, required: true },
-  checkInDate: { type: Date, required: true },
-  checkOutDate: { type: Date, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, required: true },
+  checkInDate: { type: String, required: true },
+  checkOutDate: { type: String, required: true },
   name: { type: String, required: true },
   mobile: { type: String, required: true },
   price: Number

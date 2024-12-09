@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
 import BookingSection from "../components/BookingSection";
+import { differenceInCalendarDays } from "date-fns";
 
 export default function PlacePage() {
   const { id } = useParams();
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showAllPhotos, setShowAllPhotos] = useState(false);
+  const [checkInDate, setCheckInDate] = useState("");
+  const [checkOutDate, setCheckOutDate] = useState("");
+  const [name, setName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [redirect, setRedirect] = useState("");
 
   useEffect(() => {
     if (!id) {
@@ -19,11 +25,41 @@ export default function PlacePage() {
     });
   }, [id]);
 
+  let numNight = 0;
+  if (checkInDate && checkOutDate) {
+    numNight = differenceInCalendarDays(
+      new Date(checkOutDate),
+      new Date(checkInDate)
+    );
+  }
+
+  async function bookNow() {
+    const { data } = await axios.post("/booking", {
+      place: place._id,
+      checkInDate,
+      checkOutDate,
+      name,
+      mobile,
+      price: numNight * place.price,
+    });
+    const bookingID = data._id;
+    setRedirect(`/account/bookings/${bookingID}`);
+  }
+
+  if (redirect) {
+    return <Navigate to={redirect} />;
+  }
+
   if (showAllPhotos) {
     return (
       <div className="absolute inset-0 text-white">
         <div className="bg-black p-8 grid gap-4">
-          <h2 className="text-2xl">Photos of {place.title}</h2>
+          <h2 className="bg-red text-2xl">
+            <span className="bg-red-700 p-2 rounded-3xl">
+              {" "}
+              Photos of {place.title}
+            </span>
+          </h2>
           <button
             onClick={() => {
               setShowAllPhotos(false);
@@ -100,16 +136,22 @@ export default function PlacePage() {
                   )}
                 </div>
               </div>
+
               <button
-                className="flex absolute bottom-2 right-2 py-2 px-4 bg-gray-100 rounded-2xl border hover:bg-yellow-100 transform active:scale-95 transition-transform duration-150"
-                onClick={() => setShowAllPhotos(true)}
+                className="flex absolute bottom-2 right-2 py-2 px-4 bg-gray-100 rounded-2xl border hover:bg-yellow-200 transform active:scale-95 transition-transform duration-150"
+                onClick={() => {
+                  setShowAllPhotos(true);
+                  window.scrollTo({ top: 0, behavior: "auto" });
+                }}
               >
                 <img
                   className="w-8 h-full mr-2"
                   src="/images/pictureIcon.png"
                   alt=""
                 />
-                Show More Photos
+                <span className="relative top-1 font-semibold ">
+                  Show More Photos
+                </span>
               </button>
             </div>
           </div>
@@ -123,7 +165,7 @@ export default function PlacePage() {
           </div>
 
           {/* Grid Layout for Info */}
-          <div className="grid grid-cols-[auto_1fr] gap-6 my-6 ">
+          <div className="grid grid-cols-[auto_1fr] gap-6 mb-6 ">
             {/* Left Section */}
             <div className="p-6 bg-white rounded-2xl shadow-lg">
               <div className="mb-4">
@@ -166,8 +208,25 @@ export default function PlacePage() {
             </div>
 
             {/* Right Section */}
-            <BookingSection place={place} />
+            <BookingSection
+              place={place}
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              name={name}
+              mobile={mobile}
+              setCheckInDate={setCheckInDate}
+              setCheckOutDate={setCheckOutDate}
+              setName={setName}
+              setMobile={setMobile}
+              numNight={numNight}
+            />
           </div>
+          <button
+            onClick={bookNow}
+            className="font-semibold primary max-h transition-all duration-200 ease-in-out active:scale-95"
+          >
+            Book Now
+          </button>
         </>
       )}
     </div>
