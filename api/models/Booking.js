@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const bookingSchema = new Schema({
-  place: { type: mongoose.Schema.Types.ObjectId, required: true },
+  place: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "Place" },
   user: { type: mongoose.Schema.Types.ObjectId, required: true },
   checkInDate: { type: String, required: true },
   checkOutDate: { type: String, required: true },

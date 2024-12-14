@@ -251,7 +251,7 @@ app.post("/booking", async (req, res) => {
 app.get("/bookings", async (req, res) => {
   const { blue } = req.cookies
   jwt.verify(blue, jwtAccess, {}, async (err, user) => {
-    res.json(await Booking.find({ user: user.id }))
+    res.json(await Booking.find({ user: user.id }).populate("place"))
   })
 })
 

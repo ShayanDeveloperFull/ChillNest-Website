@@ -1,3 +1,6 @@
+import { UserContext } from "../userContext";
+import { useContext, useEffect } from "react";
+
 export default function BookingSection({
   place,
   checkInDate,
@@ -10,6 +13,14 @@ export default function BookingSection({
   setMobile,
   numNight,
 }) {
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+    }
+  }, []);
+
   return (
     <div className="p-6 bg-white text-black rounded-2xl shadow-lg flex flex-col justify-between">
       <div className="text-4xl font-bold text-white-800">
@@ -19,6 +30,7 @@ export default function BookingSection({
       </div>
       <label className="text-sm font-normal mt-4">
         <span className="font-semibold">When Do You Want To Check-In?</span>
+        {user.name}
         <input
           type="date"
           value={checkInDate}
