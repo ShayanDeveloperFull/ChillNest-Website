@@ -255,4 +255,12 @@ app.get("/bookings", async (req, res) => {
   })
 })
 
+app.delete("/user-bookings/:id", async (req, res) => {
+  const { id } = req.params;
+
+  await Booking.findByIdAndDelete(id);
+  res.status(200).json("Booking deleted successfully");
+
+});
+
 app.listen(4000)

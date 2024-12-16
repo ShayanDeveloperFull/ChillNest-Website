@@ -30,7 +30,6 @@ export default function BookingSection({
       </div>
       <label className="text-sm font-normal mt-4">
         <span className="font-semibold">When Do You Want To Check-In?</span>
-        {user.name}
         <input
           type="date"
           value={checkInDate}
