@@ -14,8 +14,8 @@ export default function PlacesFormPage() {
   const [description, setDescription] = useState("");
   const [perks, setPerks] = useState([]);
   const [extraInfo, setExtraInfo] = useState("");
-  const [checkIn, setCHeckIn] = useState("");
-  const [checkOut, setCHeckOut] = useState("");
+  const [checkIn, setCheckIn] = useState({ Date: "", Time: "" });
+  const [checkOut, setCheckOut] = useState({ Date: "", Time: "" });
   const [maxGuests, setMaxGuests] = useState("");
   const [price, setPrice] = useState("");
   const [redirect, setRedirect] = useState(false);
@@ -30,8 +30,8 @@ export default function PlacesFormPage() {
       setDescription(data.description);
       setPerks(data.perks);
       setExtraInfo(data.extraInfo);
-      setCHeckIn(data.checkIn);
-      setCHeckOut(data.checkOut);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
       setMaxGuests(data.maxGuests);
       setPrice(data.price);
     });
@@ -325,24 +325,42 @@ export default function PlacesFormPage() {
           onChange={(e) => setExtraInfo(e.target.value)}
         />
 
-        <div className="grid gap-2 sm:grid-cols-3">
-          {/* checkIn Section */}
+        {/* Check-In/Check-Out Section */}
+        <div className="grid gap-2 sm:grid-cols-2">
           <div>
-            <h3 className="mt-2 -mb-1">CheckIn Time</h3>
+            <h3 className="mt-2 -mb-1">Check-In Date</h3>
             <input
-              type="time"
-              value={checkIn}
-              onChange={(e) => setCHeckIn(e.target.value)}
+              type="date"
+              value={checkIn.Date}
+              onChange={(e) => setCheckIn({ ...checkIn, Date: e.target.value })}
             />
           </div>
-          {/* checkOut Section */}
           <div>
-            <h3 className="mt-2 -mb-1">CheckOut Time</h3>
+            <h3 className="mt-2 -mb-1">Check-In Time</h3>
             <input
               type="time"
-              value={checkOut}
-              onChange={(e) => setCHeckOut(e.target.value)}
-              placeholder=""
+              value={checkIn.Time}
+              onChange={(e) => setCheckIn({ ...checkIn, Time: e.target.value })}
+            />
+          </div>
+          <div>
+            <h3 className="mt-2 -mb-1">Check-Out Date</h3>
+            <input
+              type="date"
+              value={checkOut.Date}
+              onChange={(e) =>
+                setCheckOut({ ...checkOut, Date: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <h3 className="mt-2 -mb-1">Check-Out Time</h3>
+            <input
+              type="time"
+              value={checkOut.Time}
+              onChange={(e) =>
+                setCheckOut({ ...checkOut, Time: e.target.value })
+              }
             />
           </div>
 

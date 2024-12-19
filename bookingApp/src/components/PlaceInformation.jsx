@@ -6,13 +6,19 @@ export default function PlaceInformation({ place }) {
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
             Check-In:
           </span>
-          <span className="ml-8 text-gray-600">⌚ {place.checkIn}</span>
+          <span className="ml-8 mr-4 text-gray-600">
+            📆 {place.checkIn.Date}
+          </span>
+          ⌚{place.checkIn.Time}
         </div>
         <div className="mb-4">
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
             Check-Out:
           </span>
-          <span className="ml-4 text-gray-600">⌚ {place.checkOut}</span>
+          <span className="ml-4 mr-4 text-gray-600">
+            📆 {place.checkOut.Date}
+          </span>
+          ⌚{place.checkOut.Time}
         </div>
         <div className="mb-4">
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
