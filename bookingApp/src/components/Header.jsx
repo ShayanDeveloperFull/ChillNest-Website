@@ -63,7 +63,7 @@ export default function Header() {
           </div>
           <Link
             to={user ? "/account" : "/login"}
-            className={`bg-blue-500 text-white rounded-full p-2 border-2 border-blue-500 group ${
+            className={`bg-blue-500 text-white rounded-full p-2 border-4 border-blue-500 group ${
               user
                 ? "hover:border-yellow-400  hover:shadow-[0_0_15px_rgba(255,_255,_0,_0.8)]"
                 : ""

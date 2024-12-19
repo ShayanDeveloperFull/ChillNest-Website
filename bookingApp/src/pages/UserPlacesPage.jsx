@@ -32,7 +32,7 @@ export default function UserPlacesPage() {
           {places.length > 0 &&
             places.map((place, idx) => (
               <div
-                className="relative flex cursor-pointer border rounded-md bg-gray-100 p-2 mb-2 hover:bg-gray-300 transition-all duration-500 ease-in-out"
+                className="relative flex cursor-pointer border  rounded-md bg-gray-100 p-2 mb-2 hover:bg-gray-300 transition-all duration-500 ease-in-out"
                 key={idx}
               >
                 <Link
@@ -43,7 +43,11 @@ export default function UserPlacesPage() {
                     <PlaceImage place={place} />
                   </div>
                   <div className="flex flex-col items-start ml-2  w-full ">
-                    <h2 className="font-semibold ">{place.title}</h2>
+                    <h2 className="font-semibold ">
+                      <span className="bg-red-300 p-1 rounded-md">
+                        {place.title}
+                      </span>
+                    </h2>
                     <p className="text-sm mt-2 ">{place.description}</p>
                   </div>
                 </Link>
