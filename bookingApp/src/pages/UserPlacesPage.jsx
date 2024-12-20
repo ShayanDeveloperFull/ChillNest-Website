@@ -42,7 +42,7 @@ export default function UserPlacesPage() {
                   <div className="w-60 ">
                     <PlaceImage place={place} />
                   </div>
-                  <div className="flex flex-col items-start ml-2  w-full ">
+                  <div className="flex flex-col items-start ml-2 mt-3  w-full ">
                     <h2 className="font-semibold ">
                       <span className="bg-red-300 p-1 rounded-md">
                         {place.title}
