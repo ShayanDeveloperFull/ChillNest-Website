@@ -82,6 +82,12 @@ export default function Header() {
           </div>
         )}
 
+        {location.pathname !== "/" && (
+          <div className="text-white font-semibold text-xl ">
+            <p>Discover Your Next Stay with ChillNest</p>
+          </div>
+        )}
+
         {/* User Section */}
         <div className="flex items-center gap-2 bg-white border border-gray-400 rounded-full py-2 px-4 shadow-md">
           <Link
