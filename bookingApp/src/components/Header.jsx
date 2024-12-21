@@ -1,43 +1,42 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../userContext";
-import flatpickr from "flatpickr"; // Import Flatpickr
-import "flatpickr/dist/flatpickr.min.css"; // Import Flatpickr styles
+import flatpickr from "flatpickr";
+import "flatpickr/dist/flatpickr.min.css";
 
 export default function Header() {
   const { user, checkInDate, setCheckInDate, checkOutDate, setCheckOutDate } =
     useContext(UserContext);
   const navigate = useNavigate();
-  const location = useLocation(); // Get the current location (path)
-
+  const location = useLocation();
   const handleLogoClick = () => {
     navigate("/");
     window.location.reload();
   };
 
   useEffect(() => {
-    // Initialize Flatpickr for check-in date input
-    flatpickr("#checkInDate", {
-      dateFormat: "Y-m-d", // Format date as YYYY-MM-DD
-      placeholder: "Select Check-in Date", // Set placeholder
-      onChange: function (selectedDates) {
-        setCheckInDate(
-          selectedDates[0] ? selectedDates[0].toISOString().split("T")[0] : ""
-        );
-      },
-    });
+    if (location.pathname === "/") {
+      flatpickr("#checkInDate", {
+        dateFormat: "Y-m-d",
+        placeholder: "Select Check-in Date",
+        onChange: function (selectedDates) {
+          setCheckInDate(
+            selectedDates[0] ? selectedDates[0].toISOString().split("T")[0] : ""
+          );
+        },
+      });
 
-    // Initialize Flatpickr for check-out date input
-    flatpickr("#checkOutDate", {
-      dateFormat: "Y-m-d", // Format date as YYYY-MM-DD
-      placeholder: "Select Check-out Date", // Set placeholder
-      onChange: function (selectedDates) {
-        setCheckOutDate(
-          selectedDates[0] ? selectedDates[0].toISOString().split("T")[0] : ""
-        );
-      },
-    });
-  }, [setCheckInDate, setCheckOutDate]);
+      flatpickr("#checkOutDate", {
+        dateFormat: "Y-m-d",
+        placeholder: "Select Check-out Date",
+        onChange: function (selectedDates) {
+          setCheckOutDate(
+            selectedDates[0] ? selectedDates[0].toISOString().split("T")[0] : ""
+          );
+        },
+      });
+    }
+  }, [setCheckInDate, setCheckOutDate, location.pathname]); // Add location.pathname to reinitialize when the path changes
 
   return (
     <div className="bg-gradient-to-r from-blue-500 to-blue-800 rounded-2xl">
