@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Navigate, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BookingSection from "../components/BookingSection";
 import { differenceInCalendarDays } from "date-fns";
@@ -9,12 +9,13 @@ export default function PlacePage() {
   const { id } = useParams();
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(true);
-
   const [checkInDate, setCheckInDate] = useState("");
   const [checkOutDate, setCheckOutDate] = useState("");
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [redirect, setRedirect] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // New state for error message
+  const navigate = useNavigate(); // Initialize the navigate function
 
   useEffect(() => {
     if (!id) {
@@ -35,16 +36,24 @@ export default function PlacePage() {
   }
 
   async function bookNow() {
-    const { data } = await axios.post("/booking", {
-      place: place._id,
-      checkInDate,
-      checkOutDate,
-      name,
-      mobile,
-      price: numNight * place.price,
-    });
-    const bookingID = data._id;
-    setRedirect(`/account/bookings/${bookingID}`);
+    try {
+      const { data } = await axios.post("/booking", {
+        place: place._id,
+        checkInDate,
+        checkOutDate,
+        name,
+        mobile,
+        price: numNight * place.price,
+      });
+
+      const bookingID = data._id;
+      setRedirect(`/account/bookings/${bookingID}`);
+    } catch (error) {
+      if (error.response) {
+        // Set the error message from the response
+        setErrorMessage(error.response.data.message);
+      }
+    }
   }
 
   if (redirect) {
@@ -56,11 +65,10 @@ export default function PlacePage() {
   }
 
   return (
-    <div>
+    <div className="relative min-h-screen">
+      {/* Place Display and Booking Form */}
       <div>
-        <div>
-          <PlaceDisplay place={place} />
-        </div>
+        <PlaceDisplay place={place} />
       </div>
 
       {/* Description */}
@@ -72,7 +80,7 @@ export default function PlacePage() {
       </div>
 
       {/* Grid Layout for Info */}
-      <div className="grid grid-cols-2 gap-6 mb-6 ">
+      <div className="grid grid-cols-2 gap-6 mb-6">
         {/* Left Section */}
         <div className="p-6 bg-white rounded-2xl shadow-lg">
           <div className="mb-4">
@@ -128,12 +136,24 @@ export default function PlacePage() {
           name={name}
           mobile={mobile}
           setCheckInDate={setCheckInDate}
-          setCheckOutDate={setCheckOutDate}
+          setCheckOutDate={setCheckInDate}
           setName={setName}
           setMobile={setMobile}
           numNight={numNight}
         />
       </div>
+
+      {/* Error Message (Click to login) */}
+      {errorMessage && (
+        <div className="text-center">
+          <span
+            className="font-bold text-red-500 cursor-pointer hover:underline"
+            onClick={() => navigate("/login")}
+          >
+            {errorMessage}
+          </span>
+        </div>
+      )}
 
       <button
         onClick={bookNow}
