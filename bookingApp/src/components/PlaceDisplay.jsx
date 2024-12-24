@@ -5,21 +5,19 @@ export default function PlaceDisplay({ place }) {
 
   if (showAllPhotos) {
     return (
-      <div className="fixed inset-0 text-white bg-black p-8 overflow-auto">
-        <h2 className="text-2xl">
-          <span className="bg-red-700 p-2 rounded-3xl">
-            Photos of {place.title}
-          </span>
-        </h2>
-
-        <button
-          onClick={() => setShowAllPhotos(false)}
-          className="fixed top-2 right-6 bg-red-700 text-white font-bold px-3 py-1 rounded-full hover:bg-white hover:text-red-700 border border-red-700 transition-all duration-200 ease-in-out active:scale-95"
-        >
-          X
-        </button>
-
-        <div className="mt-8 space-y-4">
+      <div className="fixed inset-0 text-white overflow-auto">
+        <div className="bg-black p-8 grid gap-4">
+          <h2 className="text-2xl">
+            <span className="bg-red-700 p-2 rounded-3xl">
+              Photos of {place.title}
+            </span>
+          </h2>
+          <button
+            onClick={() => setShowAllPhotos(false)}
+            className="fixed top-2 right-6 bg-red-700 text-white font-bold px-3 py-1 rounded-full hover:bg-white hover:text-red-700 border border-red-700 transition-all duration-200 ease-in-out active:scale-95"
+          >
+            X
+          </button>
           {place.addedPhotos.length > 0 &&
             place.addedPhotos.map((photo) => (
               <div key={photo} className="flex justify-center">
@@ -90,7 +88,7 @@ export default function PlaceDisplay({ place }) {
                 className="flex absolute bottom-2 right-2 py-2 px-4 bg-gray-100 rounded-2xl border hover:bg-yellow-200 transform active:scale-95 transition-transform duration-150"
                 onClick={() => {
                   setShowAllPhotos(true);
-                  window.scrollTo({ top: 0, behavior: "smooth" });
+                  window.scrollTo({ top: 0, behavior: "auto" });
                 }}
               >
                 <img
