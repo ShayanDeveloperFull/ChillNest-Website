@@ -87,16 +87,16 @@ export default function PlacePage() {
         <div className="p-6 bg-white rounded-2xl shadow-lg">
           <div className="mb-4">
             <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
-              Check-In:
+              Available From:
             </span>
-            <span className="ml-8 mr-4 text-gray-600">
+            <span className="ml-3 mr-4 text-gray-600">
               📆 {place.checkIn.Date}
             </span>
             ⌚{place.checkIn.Time}
           </div>
           <div className="mb-4">
             <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
-              Check-Out:
+              Available Until:
             </span>
             <span className="ml-4 mr-4 text-gray-600">
               📆 {place.checkOut.Date}
@@ -104,7 +104,7 @@ export default function PlacePage() {
             ⌚{place.checkOut.Time}
           </div>
           <div className="mb-4">
-            <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
+            <span className="bg-yellow-200 mr-8 p-1 rounded-md font-bold text-lg">
               Guest Limit:
             </span>
             <span className="ml-2 text-gray-600">🧑 {place.maxGuests}</span>

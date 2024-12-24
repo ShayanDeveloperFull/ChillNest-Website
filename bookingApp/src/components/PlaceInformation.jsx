@@ -4,18 +4,18 @@ export default function PlaceInformation({ place }) {
       <div className="p-6 bg-white rounded-2xl shadow-lg">
         <div className="mb-4">
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
-            Check-In:
+            Available From:
           </span>
-          <span className="ml-8 mr-4 text-gray-600">
+          <span className="ml-3 mr-4 text-gray-600">
             📆 {place.checkIn.Date}
           </span>
           ⌚{place.checkIn.Time}
         </div>
         <div className="mb-4">
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
-            Check-Out:
+            Available Until
           </span>
-          <span className="ml-4 mr-4 text-gray-600">
+          <span className="ml-6 mr-4 text-gray-600">
             📆 {place.checkOut.Date}
           </span>
           ⌚{place.checkOut.Time}
@@ -24,7 +24,7 @@ export default function PlaceInformation({ place }) {
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
             Guest Limit:
           </span>
-          <span className="ml-2 text-gray-600">🧑 {place.maxGuests}</span>
+          <span className="ml-10 text-gray-600">🧑 {place.maxGuests}</span>
         </div>
         <div className="mb-4">
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">

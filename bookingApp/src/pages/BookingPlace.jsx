@@ -25,16 +25,18 @@ export default function BookingPlace() {
   return (
     <div>
       <div className="relative">
-        <div className="absolute top-0 right-0 m-4">
-          <p className=" text-sm">
-            <span className="bg-yellow-200 p-1 rounded-md font-bold">
-              Contact:
-            </span>{" "}
-            <span className="text-sm">{booking.place.owner.name}</span>
-            <span className="ml-3 text-xs">
-              📞{booking.place.owner.phoneNumber}
-            </span>
-          </p>
+        <div className="absolute top-0 right-0 mr-1 mt-4">
+          <div className="bg-white rounded-2xl shadow-lg p-3">
+            <p className=" text-sm">
+              <span className="bg-yellow-200 p-1 rounded-md font-bold">
+                Contact:
+              </span>{" "}
+              <span className="text-sm">{booking.place.owner.name}</span>
+              <span className="ml-3 text-xs">
+                📞{booking.place.owner.phoneNumber}
+              </span>
+            </p>
+          </div>
         </div>
         <PlaceDisplay place={booking.place} />
       </div>
