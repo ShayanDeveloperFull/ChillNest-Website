@@ -228,20 +228,26 @@ app.get("/places", async (req, res) => {
 
 app.post("/booking", async (req, res) => {
   const { blue } = req.cookies;
+
   if (!blue) {
     return res.status(401).json({
       error: "Authentication required",
-      message: "Please log in to make a booking"
+      message: "Please log in to make a booking",
     });
   }
 
   const { place, checkInDate, checkOutDate, name, mobile, price } = req.body;
 
+  if (!place || !checkInDate || !checkOutDate || !name || !mobile || !price) {
+    return res.status(400).json({
+      error: "Missing required fields",
+      message: "Please provide all required fields"
+    });
+  }
   jwt.verify(blue, jwtAccess, {}, async (err, user) => {
     if (err) {
       return res.status(401).json({ error: "Invalid token" });
     }
-
     const bookingDoc = await Booking.create({
       place,
       user: user.id,
@@ -251,11 +257,9 @@ app.post("/booking", async (req, res) => {
       mobile,
       price,
     });
-
     res.json(bookingDoc);
   });
 });
-
 
 
 app.get("/bookings", async (req, res) => {

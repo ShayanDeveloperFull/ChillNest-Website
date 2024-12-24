@@ -14,7 +14,8 @@ export default function PlacePage() {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [redirect, setRedirect] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage1, setErrorMessage1] = useState("");
+  const [errorMessage2, setErrorMessage2] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -49,8 +50,10 @@ export default function PlacePage() {
       const bookingID = data._id;
       setRedirect(`/account/bookings/${bookingID}`);
     } catch (error) {
-      if (error.response) {
-        setErrorMessage(error.response.data.message);
+      if (error.response === 401) {
+        setErrorMessage1(error.response.data.message);
+      } else {
+        setErrorMessage2(error.response.data.message);
       }
     }
   }
@@ -135,7 +138,7 @@ export default function PlacePage() {
           name={name}
           mobile={mobile}
           setCheckInDate={setCheckInDate}
-          setCheckOutDate={setCheckInDate}
+          setCheckOutDate={setCheckOutDate}
           setName={setName}
           setMobile={setMobile}
           numNight={numNight}
@@ -143,14 +146,19 @@ export default function PlacePage() {
       </div>
 
       {/* Error Message */}
-      {errorMessage && (
+      {errorMessage1 && (
         <div className="text-center">
           <span
             className="font-bold text-red-500 cursor-pointer hover:underline"
             onClick={() => navigate("/login")}
           >
-            {errorMessage}
+            {errorMessage1}
           </span>
+        </div>
+      )}
+      {errorMessage2 && (
+        <div className="text-center">
+          <span className="font-bold text-red-500">{errorMessage2}</span>
         </div>
       )}
 
