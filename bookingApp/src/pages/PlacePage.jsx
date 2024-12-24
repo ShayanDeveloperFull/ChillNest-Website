@@ -14,8 +14,8 @@ export default function PlacePage() {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [redirect, setRedirect] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // New state for error message
-  const navigate = useNavigate(); // Initialize the navigate function
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!id) {
@@ -50,7 +50,6 @@ export default function PlacePage() {
       setRedirect(`/account/bookings/${bookingID}`);
     } catch (error) {
       if (error.response) {
-        // Set the error message from the response
         setErrorMessage(error.response.data.message);
       }
     }
@@ -143,7 +142,7 @@ export default function PlacePage() {
         />
       </div>
 
-      {/* Error Message (Click to login) */}
+      {/* Error Message */}
       {errorMessage && (
         <div className="text-center">
           <span
