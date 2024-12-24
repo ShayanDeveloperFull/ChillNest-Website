@@ -50,7 +50,7 @@ export default function PlacePage() {
       const bookingID = data._id;
       setRedirect(`/account/bookings/${bookingID}`);
     } catch (error) {
-      if (error.response === 401) {
+      if (error.response.status === 401) {
         setErrorMessage1(error.response.data.message);
       } else {
         setErrorMessage2(error.response.data.message);
