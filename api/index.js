@@ -30,12 +30,12 @@ const bcryptPassword = bcrypt.genSaltSync(10)
 const jwtAccess = process.env.JWT_SECRET
 
 const mongoose = require("mongoose");
-const { userInfo } = require('os');
+
 mongoose.connect(process.env.MONGO_URL)
 
 
 app.post('/register', async (req, res) => {
-  const { name, email, password } = req.body
+  const { name, email, password, phoneNumber } = req.body
 
   if (!email) {
     return res.status(400).json("Email Address Needs A Valid Input")
@@ -45,7 +45,8 @@ app.post('/register', async (req, res) => {
     const userDoc = await User.create({
       name,
       email,
-      password: bcrypt.hashSync(password, bcryptPassword)
+      password: bcrypt.hashSync(password, bcryptPassword),
+      phoneNumber
     })
     res.json(userDoc)
   } catch (err) {
@@ -80,8 +81,8 @@ app.get("/profile", (req, res) => {
     jwt.verify(blue, jwtAccess, {}, async (err, user) => {
       if (err) throw err;
       //console.log(user)
-      const { name, email, _id } = await User.findById(user.id)
-      res.json({ name, email, _id })
+      const { name, email, phoneNumber, _id } = await User.findById(user.id)
+      res.json({ name, email, phoneNumber, _id, })
     })
 
   } else {
@@ -183,7 +184,8 @@ app.delete("/user-places/:id", async (req, res) => {
 
 app.get("/places/:id", async (req, res) => {
   const { id } = req.params
-  res.json(await Place.findById(id))
+  const place = await Place.findById(id).populate("owner")
+  res.json(place)
 })
 
 app.put("/updatePlaces", async (req, res) => {
@@ -249,11 +251,17 @@ app.post("/booking", async (req, res) => {
 
 
 app.get("/bookings", async (req, res) => {
-  const { blue } = req.cookies
+  const { blue } = req.cookies;
   jwt.verify(blue, jwtAccess, {}, async (err, user) => {
-    res.json(await Booking.find({ user: user.id }).populate("place"))
-  })
-})
+    const bookings = await Booking.find({ user: user.id })
+      .populate({
+        path: "place",
+        populate: { path: "owner" },
+      });
+    res.json(bookings);
+  });
+});
+
 
 app.delete("/user-bookings/:id", async (req, res) => {
   const { id } = req.params;

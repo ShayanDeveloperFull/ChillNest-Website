@@ -6,6 +6,7 @@ export default function RegisterPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [redirect, setRedirect] = useState("");
 
   async function registerUser(e) {
@@ -15,6 +16,7 @@ export default function RegisterPage() {
         email,
         password,
         name,
+        phoneNumber,
       });
       alert("Registration Successful!");
       setRedirect("/login");
@@ -37,6 +39,12 @@ export default function RegisterPage() {
             placeholder="Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Phone Number"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
           />
           <input
             type="email"

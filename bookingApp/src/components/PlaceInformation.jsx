@@ -1,6 +1,6 @@
 export default function PlaceInformation({ place }) {
   return (
-    <div className="grid grid-cols-[auto_1fr] gap-6 mb-6">
+    <div className="grid grid-cols-2 gap-6 mb-6">
       <div className="p-6 bg-white rounded-2xl shadow-lg">
         <div className="mb-4">
           <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
@@ -43,7 +43,7 @@ export default function PlaceInformation({ place }) {
           <span className="bg-yellow-200 p-1 rounded-md font-semibold text-xl mb-2">
             Extra Info:
           </span>
-          <p className="mt-1 text-gray-600">{place.extraInfo}</p>
+          <p className="mt-1 text-gray-600 w-1/2">{place.extraInfo}</p>
         </div>
       </div>
     </div>

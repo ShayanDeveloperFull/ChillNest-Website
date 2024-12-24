@@ -125,32 +125,30 @@ export default function PlacesFormPage() {
     <div>
       <form onSubmit={savePlace}>
         {/* Title Section */}
-        <h2 className="text-xl mt-4">Title</h2>
-        <p className="text-gray-500 text-sm">- For Your Desired Place</p>
+        <h2 className="text-xl mt-4">Name of Place</h2>
         <input
           type="text"
-          placeholder="title"
+          placeholder="What Is The Name of Your Place?"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
         {/* Address Section */}
         <h2 className="text-xl mt-4">Address</h2>
-        <p className="text-gray-500 text-sm">- Address To The Place</p>
         <input
           type="text"
-          placeholder="address"
+          placeholder="Enter Your Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
         />
 
         {/* Photos Section */}
         <h2 className="text-xl mt-4">Photos</h2>
-        <p className="text-gray-500 text-sm">- More = Better</p>
+
         <div className="flex gap-2">
           <input
             type="text"
-            placeholder="Add using a Link..."
+            placeholder="Get an Image Address Link"
             value={photoLink}
             onChange={(e) => setPhotoLink(e.target.value)}
             className="flex-grow-0 w-3/4"
@@ -204,11 +202,11 @@ export default function PlacesFormPage() {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    fill={link === addedPhotos[0] ? "#FEF08A" : "none"} // Set yellow-100 hex color
+                    fill={link === addedPhotos[0] ? "#FEF08A" : "none"}
                     viewBox="0 0 24 24"
                     strokeWidth={1.5}
                     stroke="currentColor"
-                    className="size-6 hover:fill-[#FEF08A]" // Use same yellow-100 color for hover state
+                    className="size-6 hover:fill-[#FEF08A]"
                   >
                     <path
                       strokeLinecap="round"
@@ -249,7 +247,6 @@ export default function PlacesFormPage() {
 
         {/* Description Section */}
         <h2 className="text-xl mt-4">Description</h2>
-        <p className="text-gray-500 text-sm">- Description of the place</p>
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
@@ -257,9 +254,7 @@ export default function PlacesFormPage() {
 
         {/* Perks Section */}
         <h2 className="text-xl mt-4">Perks</h2>
-        <p className="text-gray-500 text-sm">
-          - Select All The Perks of Your Place
-        </p>
+        <p className="text-gray-500 text-sm"></p>
         <div className=" mt-2 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           <label className="border p-4 flex gap-2 items-center cursor-pointer ">
             <img className="h-10 w-auto" src="/images/wifiSymbol.webp" alt="" />
@@ -319,7 +314,9 @@ export default function PlacesFormPage() {
 
         {/* Extra Info Section */}
         <h2 className="text-xl mt-4">Extra Info</h2>
-        <p className="text-gray-500 text-sm">-House Rules, etc</p>
+        <p className="text-gray-500 text-sm">
+          Special Rules, Appliance regulations, etc..
+        </p>
         <textarea
           value={extraInfo}
           onChange={(e) => setExtraInfo(e.target.value)}
@@ -328,7 +325,7 @@ export default function PlacesFormPage() {
         {/* Check-In/Check-Out Section */}
         <div className="grid gap-2 sm:grid-cols-2">
           <div>
-            <h3 className="mt-2 -mb-1">Check-In Date</h3>
+            <h3 className="mt-2 -mb-1">Available From</h3>
             <input
               type="date"
               value={checkIn.Date}
@@ -344,7 +341,7 @@ export default function PlacesFormPage() {
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Check-Out Date</h3>
+            <h3 className="mt-2 -mb-1">Available Until</h3>
             <input
               type="date"
               value={checkOut.Date}
@@ -384,7 +381,7 @@ export default function PlacesFormPage() {
         </div>
         {/* Upload Button*/}
         <div>
-          <button className="primary transform active:scale-95 transition-transform duration-150">
+          <button className="mt-3 primary transform active:scale-95 transition-transform duration-150">
             Save
           </button>
         </div>

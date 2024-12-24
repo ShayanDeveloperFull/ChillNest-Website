@@ -18,6 +18,7 @@ export default function BookingSection({
   useEffect(() => {
     if (user) {
       setName(user.name);
+      setMobile(user.phoneNumber);
     }
   }, []);
 

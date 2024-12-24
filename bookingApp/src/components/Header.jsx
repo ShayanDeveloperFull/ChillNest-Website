@@ -18,7 +18,6 @@ export default function Header() {
     if (location.pathname === "/") {
       flatpickr("#checkInDate", {
         dateFormat: "Y-m-d",
-        placeholder: "Select Check-in Date",
         onChange: function (selectedDates) {
           setCheckInDate(
             selectedDates[0] ? selectedDates[0].toISOString().split("T")[0] : ""
@@ -28,7 +27,6 @@ export default function Header() {
 
       flatpickr("#checkOutDate", {
         dateFormat: "Y-m-d",
-        placeholder: "Select Check-out Date",
         onChange: function (selectedDates) {
           setCheckOutDate(
             selectedDates[0] ? selectedDates[0].toISOString().split("T")[0] : ""
@@ -66,7 +64,7 @@ export default function Header() {
                 type="text"
                 value={checkInDate}
                 onChange={(e) => setCheckInDate(e.target.value)}
-                placeholder="Select Check-In Date"
+                placeholder="Select Availability From"
               />
             </div>
             <div>
@@ -75,7 +73,7 @@ export default function Header() {
                 type="text"
                 value={checkOutDate}
                 onChange={(e) => setCheckOutDate(e.target.value)}
-                placeholder="Select Check-Out Date"
+                placeholder="Select Availability Until"
               />
             </div>
           </div>

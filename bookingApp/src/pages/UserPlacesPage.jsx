@@ -48,7 +48,7 @@ export default function UserPlacesPage() {
                         {place.title}
                       </span>
                     </h2>
-                    <p className="text-sm mt-2 ">{place.description}</p>
+                    <p className="text-sm mt-2">{place.description}</p>
                   </div>
                 </Link>
                 <button
