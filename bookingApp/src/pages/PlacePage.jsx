@@ -67,7 +67,7 @@ export default function PlacePage() {
   }
 
   return (
-    <div className="relative min-h-screen">
+    <div>
       {/* Place Display and Booking Form */}
       <div>
         <PlaceDisplay place={place} />

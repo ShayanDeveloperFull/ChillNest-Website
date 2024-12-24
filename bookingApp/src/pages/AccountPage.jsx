@@ -21,11 +21,11 @@ export default function AccountPage() {
   }
 
   if (!ready) {
-    return "LOADING........"; //To make up for the delay
+    return "LOADING........";
   }
 
   if (ready && !user && !redirect) {
-    return <Navigate to={"/login"} />; //To make up for the delay
+    return <Navigate to={"/login"} />;
   }
 
   if (redirect) {

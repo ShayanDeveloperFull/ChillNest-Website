@@ -25,8 +25,8 @@ export default function BookingPlace() {
   return (
     <div>
       <div className="relative">
-        <div className="absolute top-0 right-0 m-4 font-semibold text-lg">
-          <p className="text-sm">
+        <div className="absolute top-0 right-0 m-4">
+          <p className=" text-sm">
             <span className="bg-yellow-200 p-1 rounded-md font-bold">
               Contact:
             </span>{" "}
