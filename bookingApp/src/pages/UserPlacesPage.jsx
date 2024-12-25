@@ -49,7 +49,7 @@ export default function UserPlacesPage() {
                       </span>
                     </h2>
                     <div>
-                      <p className="text-sm mt-2 text-left">
+                      <p className="text-sm mt-2 text-left italic">
                         {place.description}
                       </p>
                     </div>
