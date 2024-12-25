@@ -59,11 +59,15 @@ export default function MainPage() {
       <div className="grid gap-x-8 gap-y-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {filteredPlaces.length > 0 &&
           filteredPlaces.map((place, idx) => (
-            <Link to={"/place/" + place._id} key={idx}>
+            <Link
+              to={"/place/" + place._id}
+              key={idx}
+              className="group block  bg-white rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300"
+            >
               {place.addedPhotos.length > 0 && (
                 <div className="flex">
                   <img
-                    className="mb-2 object-cover aspect-square rounded-xl"
+                    className="mb-2 object-cover aspect-square rounded-lg"
                     src={
                       `http://localhost:4000/uploads/` + place.addedPhotos[0]
                     }
@@ -71,9 +75,13 @@ export default function MainPage() {
                   />
                 </div>
               )}
-              <h2 className="font-bold">{place.address}</h2>
-              <h3 className="text-sm text-gray-500">{place.title}</h3>
-              <div className="mt-1">
+              <h2 className="font-bold text-gray-800 group-hover:text-indigo-600 mb-1">
+                {place.address}
+              </h2>
+              <h3 className="text-sm text-gray-500 group-hover:text-yellow-600">
+                {place.title}
+              </h3>
+              <div className="mt-2">
                 <span className="font-bold">${place.price} </span> per night
               </div>
             </Link>
