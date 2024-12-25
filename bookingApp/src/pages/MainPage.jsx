@@ -9,6 +9,7 @@ export default function MainPage() {
   const [filteredPlaces, setFilteredPlaces] = useState([]);
 
   useEffect(() => {
+    // Fetch places from the API on component mount
     axios.get("/places").then(({ data }) => {
       setPlaces(data);
       setFilteredPlaces(data);
@@ -23,9 +24,10 @@ export default function MainPage() {
         const selectedCheckIn = new Date(checkInDate);
         const selectedCheckOut = new Date(checkOutDate);
 
+        // Adjust comparison logic to allow overlapping date ranges
         return (
-          placeCheckInDate <= selectedCheckIn &&
-          placeCheckOutDate >= selectedCheckOut
+          placeCheckInDate <= selectedCheckOut &&
+          placeCheckOutDate >= selectedCheckIn
         );
       });
 
@@ -53,6 +55,14 @@ export default function MainPage() {
             <h3 className="text-sm text-gray-500">{place.title}</h3>
             <div className="mt-1">
               <span className="font-bold">${place.price} </span> per night
+            </div>
+
+            {/* Display the Check-in and Check-out Dates */}
+            <div className="mt-1">
+              <span className="bg-black p-1 font-semibold text-white">
+                {place.checkIn.Date} <span className="mr-2">&#8594;</span>
+                {place.checkOut.Date}
+              </span>
             </div>
           </Link>
         ))}

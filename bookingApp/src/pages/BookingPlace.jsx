@@ -41,12 +41,6 @@ export default function BookingPlace() {
         <PlaceDisplay place={booking.place} />
       </div>
 
-      <div className="my-6 p-4 bg-white rounded-2xl shadow-lg w-[45%]">
-        <h2 className="font-semibold text-2xl mb-2 border-b pb-2">
-          <span className="bg-yellow-200 p-1 rounded-md">Description</span>
-        </h2>
-        <p className="text-gray-700 text-lg">{booking.place.description}</p>
-      </div>
       <PlaceInformation place={booking.place} />
     </div>
   );
