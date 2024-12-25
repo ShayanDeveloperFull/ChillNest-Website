@@ -76,12 +76,6 @@ export default function MainPage() {
               <div className="mt-1">
                 <span className="font-bold">${place.price} </span> per night
               </div>
-              <div className="mt-1">
-                <span className="bg-red-500 p-1">
-                  {place.checkIn.Date} <span className="mr-2">&#8594;</span>
-                  {place.checkOut.Date}
-                </span>
-              </div>
             </Link>
           ))}
       </div>
