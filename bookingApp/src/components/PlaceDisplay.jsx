@@ -22,7 +22,7 @@ export default function PlaceDisplay({ place }) {
             place.addedPhotos.map((photo) => (
               <div key={photo} className="flex justify-center">
                 <img
-                  className="w-[1500px] rounded-2xl border border-yellow-400"
+                  className="w-[1500px] h-[800px] rounded-2xl border border-yellow-400"
                   src={`http://localhost:4000/uploads/${photo}`}
                   alt=""
                 />
