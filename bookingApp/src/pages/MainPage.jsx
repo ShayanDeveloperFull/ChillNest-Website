@@ -9,7 +9,6 @@ export default function MainPage() {
   const [filteredPlaces, setFilteredPlaces] = useState([]);
 
   useEffect(() => {
-    // Fetch places from the API on component mount
     axios.get("/places").then(({ data }) => {
       setPlaces(data);
       setFilteredPlaces(data);
@@ -19,19 +18,14 @@ export default function MainPage() {
   useEffect(() => {
     if (checkInDate && checkOutDate) {
       const filtered = places.filter((place) => {
-        const placeCheckInDate = new Date(
-          place.checkIn.Date + "T" + place.checkIn.Time
-        ); // Create full Date object
-        const placeCheckOutDate = new Date(
-          place.checkOut.Date + "T" + place.checkOut.Time
-        ); // Create full Date object
-        const selectedCheckIn = new Date(checkInDate); // User's selected check-in date
-        const selectedCheckOut = new Date(checkOutDate); // User's selected check-out date
+        const placeCheckInDate = new Date(place.checkIn.Date);
+        const placeCheckOutDate = new Date(place.checkOut.Date);
+        const selectedCheckIn = new Date(checkInDate);
+        const selectedCheckOut = new Date(checkOutDate);
 
-        // Ensure that the selected check-in and check-out dates are within the available range
         return (
-          selectedCheckIn >= placeCheckInDate && // Selected check-in must be on or after place's check-in
-          selectedCheckOut <= placeCheckOutDate // Selected check-out must be on or before place's check-out
+          placeCheckInDate <= selectedCheckIn &&
+          placeCheckOutDate >= selectedCheckOut
         );
       });
 
@@ -60,10 +54,8 @@ export default function MainPage() {
             <div className="mt-1">
               <span className="font-bold">${place.price} </span> per night
             </div>
-
-            {/* Display the Check-in and Check-out Dates */}
             <div className="mt-1">
-              <span className="bg-black p-1 font-semibold text-white">
+              <span className="bg-red-500 p-1">
                 {place.checkIn.Date} <span className="mr-2">&#8594;</span>
                 {place.checkOut.Date}
               </span>
