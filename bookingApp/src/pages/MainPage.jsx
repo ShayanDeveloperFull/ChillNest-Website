@@ -19,15 +19,19 @@ export default function MainPage() {
   useEffect(() => {
     if (checkInDate && checkOutDate) {
       const filtered = places.filter((place) => {
-        const placeCheckInDate = new Date(place.checkIn.Date);
-        const placeCheckOutDate = new Date(place.checkOut.Date);
-        const selectedCheckIn = new Date(checkInDate);
-        const selectedCheckOut = new Date(checkOutDate);
+        const placeCheckInDate = new Date(
+          place.checkIn.Date + "T" + place.checkIn.Time
+        ); // Create full Date object
+        const placeCheckOutDate = new Date(
+          place.checkOut.Date + "T" + place.checkOut.Time
+        ); // Create full Date object
+        const selectedCheckIn = new Date(checkInDate); // User's selected check-in date
+        const selectedCheckOut = new Date(checkOutDate); // User's selected check-out date
 
-        // Adjust comparison logic to allow overlapping date ranges
+        // Ensure that the selected check-in and check-out dates are within the available range
         return (
-          placeCheckInDate <= selectedCheckOut &&
-          placeCheckOutDate >= selectedCheckIn
+          selectedCheckIn >= placeCheckInDate && // Selected check-in must be on or after place's check-in
+          selectedCheckOut <= placeCheckOutDate // Selected check-out must be on or before place's check-out
         );
       });
 
