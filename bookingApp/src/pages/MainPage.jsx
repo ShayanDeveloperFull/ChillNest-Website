@@ -82,7 +82,7 @@ export default function MainPage() {
                 </h3>
               </div>
               <div>
-                <p className="text-gray-500 text-xs">
+                <p className="text-gray-500 text-xs italic">
                   {place.checkIn.Date} -- {place.checkOut.Date}
                 </p>
               </div>
