@@ -44,7 +44,7 @@ export default function PlaceDisplay({ place }) {
             href={`https://maps.google.com/?q=${place.address}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="block font-semibold underline my-2"
+            className="block font-semibold underline my-2 w-fit"
           >
             <div className="flex">
               <img
