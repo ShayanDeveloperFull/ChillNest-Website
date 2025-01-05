@@ -4,8 +4,8 @@ import axios from "axios";
 import { UserContext } from "../userContext";
 
 export default function MainPage() {
-  const { checkInDate, checkOutDate } = useContext(UserContext); // Using context for date range
-  const [filteredPlaces, setFilteredPlaces] = useState([]); // Only track filtered places
+  const { checkInDate, checkOutDate } = useContext(UserContext);
+  const [filteredPlaces, setFilteredPlaces] = useState([]);
 
   useEffect(() => {
     axios
