@@ -4,38 +4,24 @@ import axios from "axios";
 import { UserContext } from "../userContext";
 
 export default function MainPage() {
-  const { checkInDate, checkOutDate } = useContext(UserContext);
-  const [places, setPlaces] = useState([]);
-  const [filteredPlaces, setFilteredPlaces] = useState([]);
+  const { checkInDate, checkOutDate } = useContext(UserContext); // Using context for date range
+  const [filteredPlaces, setFilteredPlaces] = useState([]); // Only track filtered places
 
   useEffect(() => {
-    axios.get("/places").then(({ data }) => {
-      setPlaces(data);
-      setFilteredPlaces(data);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (checkInDate && checkOutDate) {
-      const selectedCheckIn = new Date(checkInDate);
-      const selectedCheckOut = new Date(checkOutDate);
-
-      const filtered = places.filter((place) => {
-        const placeCheckInDate = new Date(place.checkIn.Date);
-        const placeCheckOutDate = new Date(place.checkOut.Date);
-
-        return (
-          placeCheckInDate <= selectedCheckOut &&
-          placeCheckOutDate >= selectedCheckIn &&
-          selectedCheckOut <= placeCheckOutDate
-        );
+    axios
+      .get("/places", {
+        params: {
+          checkInDate,
+          checkOutDate,
+        },
+      })
+      .then(({ data }) => {
+        setFilteredPlaces(data);
+      })
+      .catch((err) => {
+        console.error("Error fetching places:", err);
       });
-
-      setFilteredPlaces(filtered);
-    } else {
-      setFilteredPlaces(places);
-    }
-  }, [checkInDate, checkOutDate, places]);
+  }, [checkInDate, checkOutDate]);
 
   const message =
     checkInDate && checkOutDate
