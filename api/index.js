@@ -225,29 +225,28 @@ app.put("/updatePlaces", async (req, res) => {
 app.get("/places", async (req, res) => {
   const { checkInDate, checkOutDate } = req.query;
 
-
+  // Convert dates to Date objects
   const selectedCheckIn = new Date(checkInDate);
   const selectedCheckOut = new Date(checkOutDate);
 
   let filteredPlaces = await Place.find();
 
   if (checkInDate && checkOutDate) {
-
+    // Filter places on the backend based on the selected dates
     filteredPlaces = filteredPlaces.filter((place) => {
       const placeCheckInDate = new Date(place.checkIn.Date);
       const placeCheckOutDate = new Date(place.checkOut.Date);
 
-
       return (
         placeCheckInDate <= selectedCheckOut &&
-        placeCheckOutDate >= selectedCheckIn
+        placeCheckOutDate >= selectedCheckIn &&
+        selectedCheckOut <= placeCheckOutDate
       );
     });
   }
 
   res.json(filteredPlaces);
 });
-
 
 
 app.post("/booking", async (req, res) => {
