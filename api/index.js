@@ -237,10 +237,11 @@ app.get("/places", async (req, res) => {
       const placeCheckOutDate = new Date(place.checkOut.Date);
 
       return (
-        placeCheckInDate <= selectedCheckOut &&
-        placeCheckOutDate >= selectedCheckIn &&
-        selectedCheckOut <= placeCheckOutDate
+        (selectedCheckIn <= placeCheckOutDate && selectedCheckOut >= placeCheckInDate)
+        && (selectedCheckIn >= placeCheckInDate && selectedCheckOut <= placeCheckOutDate)
+        && (selectedCheckOut <= placeCheckOutDate && selectedCheckIn >= placeCheckInDate)
       );
+
     });
   }
 
