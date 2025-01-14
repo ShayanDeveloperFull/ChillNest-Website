@@ -49,7 +49,7 @@ export default function PlaceDisplay({ place }) {
             <div className="flex">
               <img
                 className="flex w-10 h-full mr-2"
-                src="/images/mapIcon.jpg"
+                src="/mapIcon.jpg"
                 alt=""
               />
               {place.address}
@@ -93,7 +93,7 @@ export default function PlaceDisplay({ place }) {
               >
                 <img
                   className="w-8 h-full mr-2"
-                  src="/images/pictureIcon.png"
+                  src="/pictureIcon.png"
                   alt=""
                 />
                 <span className="relative top-1 font-semibold">
