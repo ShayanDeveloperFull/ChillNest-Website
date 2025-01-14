@@ -21,7 +21,7 @@ app.use("/uploads", express.static(__dirname + "/uploads"))
 
 app.use(cors({
   credentials: true,
-  origin: "https://nestwebsite-frontend.onrender.com" 
+  origin: "http://localhost:5173"
 }));
 
 app.use(cookieParser());
