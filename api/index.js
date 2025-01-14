@@ -52,7 +52,7 @@ app.post('/register', async (req, res) => {
   } catch (err) {
     res.status(409).json(err)
   }
-
+  //everything works
 })
 
 app.post('/login', async (req, res) => {
