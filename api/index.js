@@ -89,9 +89,10 @@ app.post("/logout", (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    expires: new Date(0)
+    maxAge: 0
   }).json(true);
 });
+
 
 app.post("/upload-by-link", async (req, res) => {
   const { photoLink } = req.body;
