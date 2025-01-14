@@ -257,7 +257,7 @@ export default function PlacesFormPage() {
         <p className="text-gray-500 text-sm"></p>
         <div className=" mt-2 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
           <label className="border p-4 flex gap-2 items-center cursor-pointer ">
-            <img className="h-10 w-auto" src="/images/wifiSymbol.webp" alt="" />
+            <img className="h-10 w-auto" src="/wifiSymbol.webp" alt="" />
             <input
               type="checkbox"
               checked={perks.includes("WIFI")}
@@ -267,7 +267,7 @@ export default function PlacesFormPage() {
             <p>WIFI</p>
           </label>
           <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
-            <img className="h-10 w-auto" src="/images/parkingIcon.jpg" alt="" />
+            <img className="h-10 w-auto" src="/parkingIcon.jpg" alt="" />
             <input
               type="checkbox"
               checked={perks.includes("Parking")}
@@ -277,7 +277,7 @@ export default function PlacesFormPage() {
             <p>Parking</p>
           </label>
           <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
-            <img className="h-10 w-auto" src="/images/petIcon.jpg" alt="" />
+            <img className="h-10 w-auto" src="/petIcon.jpg" alt="" />
             <input
               type="checkbox"
               checked={perks.includes("Pets")}
@@ -287,7 +287,7 @@ export default function PlacesFormPage() {
             <p>Pets</p>
           </label>
           <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer ">
-            <img className="h-10 w-auto" src="/images/hotTubIcon.jpg" alt="" />
+            <img className="h-10 w-auto" src="/hotTubIcon.jpg" alt="" />
             <input
               type="checkbox"
               checked={perks.includes("Hot Tub")}
@@ -297,11 +297,7 @@ export default function PlacesFormPage() {
             <p>Hot Tub</p>
           </label>
           <label className="border p-4 whitespace-nowrap flex gap-2 items-center cursor-pointer">
-            <img
-              className="h-10 w-auto"
-              src="/images/tvStreaming.webp"
-              alt=""
-            />
+            <img className="h-10 w-auto" src="/tvStreaming.webp" alt="" />
             <input
               type="checkbox"
               checked={perks.includes("TV Streaming Services")}
