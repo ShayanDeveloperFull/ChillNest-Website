@@ -38,5 +38,9 @@
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "vite": "^5.4.8"
+  },
+  "render": {
+    "buildCommand": "npm run build",
+    "publishDirectory": "./dist"
   }
 }
