@@ -47,7 +47,7 @@ export default function Header() {
         >
           <div className="rounded-lg bg-blue-300">
             <img
-              src="/public/WebLogo.jpg"
+              src="/WebLogo.jpg"
               className="h-14 w-auto mix-blend-multiply"
               alt="ChillNest Logo"
             />
