@@ -11,7 +11,6 @@ const imageDownloader = require("image-downloader");
 const validUrl = require("valid-url");
 const multer = require("multer");
 const fs = require("fs");
-const path = require('path');
 
 const app = express();
 
@@ -31,11 +30,6 @@ const jwtAccess = process.env.JWT_SECRET;
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.MONGO_URL);
-
-app.use(express.static(path.join(__dirname, 'bookingApp/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'bookingApp/build', 'index.html'));
-});
 
 app.post('/register', async (req, res) => {
   const { name, email, password, phoneNumber } = req.body;
@@ -98,6 +92,7 @@ app.post("/logout", (req, res) => {
     maxAge: 0
   }).json(true);
 });
+
 
 app.post("/upload-by-link", async (req, res) => {
   const { photoLink } = req.body;
