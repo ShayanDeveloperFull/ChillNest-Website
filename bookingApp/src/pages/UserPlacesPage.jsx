@@ -48,7 +48,7 @@ export default function UserPlacesPage() {
                         {place.title}
                       </span>
                     </h2>
-                    <div class="w-[55%]">
+                    <div className="w-[55%]">
                       <p className="text-sm mt-2 text-left italic">
                         {place.description}
                       </p>
