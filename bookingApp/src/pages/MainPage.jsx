@@ -54,7 +54,7 @@ export default function MainPage() {
                 <div className="flex">
                   <img
                     className="mb-2 object-cover aspect-square rounded-lg"
-                    src={`https://nestwebsite-backend.onrender.com/uploads/${place.addedPhotos[0]}`}
+                    src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[0]}`}
                     alt={place.title}
                   />
                 </div>

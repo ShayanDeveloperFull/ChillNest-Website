@@ -7,7 +7,7 @@ export default function PlaceImage({ place, idx = 0, className = null }) {
     <div>
       <img
         className={className}
-        src={`https://nestwebsite-backend.onrender.com/uploads/${place.addedPhotos[idx]}`}
+        src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[idx]}`}
         alt=""
       />
     </div>

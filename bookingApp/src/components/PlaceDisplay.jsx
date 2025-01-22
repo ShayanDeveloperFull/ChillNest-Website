@@ -23,7 +23,7 @@ export default function PlaceDisplay({ place }) {
               <div key={photo} className="flex justify-center">
                 <img
                   className="w-[1500px] h-[800px] rounded-2xl border border-yellow-400"
-                  src={`https://nestwebsite-backend.onrender.com/uploads/${photo}`}
+                  src={`https://nestwebsite-server.onrender.com/uploads/${photo}`}
                   alt=""
                 />
               </div>
@@ -61,7 +61,7 @@ export default function PlaceDisplay({ place }) {
                 {place.addedPhotos.length > 0 && (
                   <img
                     className="aspect-square object-cover h-[850px] w-full rounded-l-3xl"
-                    src={`https://nestwebsite-backend.onrender.com/uploads/${place.addedPhotos[0]}`}
+                    src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[0]}`}
                     alt=""
                   />
                 )}
@@ -70,7 +70,7 @@ export default function PlaceDisplay({ place }) {
                 {place.addedPhotos.length > 1 && (
                   <img
                     className="aspect-square object-cover h-[450px] w-full rounded-r-3xl"
-                    src={`https://nestwebsite-backend.onrender.com/uploads/${place.addedPhotos[1]}`}
+                    src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[1]}`}
                     alt=""
                   />
                 )}
@@ -78,7 +78,7 @@ export default function PlaceDisplay({ place }) {
                   {place.addedPhotos.length > 2 && (
                     <img
                       className="aspect-square object-cover relative top-2 h-[400px] w-full rounded-r-3xl"
-                      src={`https://nestwebsite-backend.onrender.com/uploads/${place.addedPhotos[2]}`}
+                      src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[2]}`}
                       alt=""
                     />
                   )}
