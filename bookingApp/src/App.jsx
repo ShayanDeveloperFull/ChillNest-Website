@@ -13,11 +13,7 @@ import PlacePage from "./pages/PlacePage";
 import BookingPlace from "./pages/BookingPlace";
 import BookingsPage from "./pages/BookingsPage";
 
-if (window.location.hostname === "localhost") {
-  axios.defaults.baseURL = "http://localhost:4000/";
-} else {
-  axios.defaults.baseURL = "https://nestwebsite.onrender.com";
-}
+axios.defaults.baseURL = "https://nestwebsite-backend.onrender.com";
 axios.defaults.withCredentials = true;
 
 function App() {
