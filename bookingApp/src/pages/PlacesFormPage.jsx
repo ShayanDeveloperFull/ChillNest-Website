@@ -169,7 +169,7 @@ export default function PlacesFormPage() {
                 <img
                   className="aspect-square w-full object-cover rounded-xl"
                   src={`https://nestwebsite-server.onrender.com/uploads/${link}`}
-                  alt=""
+                  alt="err"
                 />
                 <button
                   type="button"
