@@ -22,8 +22,8 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      "http://localhost:5173",
-      "https://nestwebsite.onrender.com",
+      "http://localhost:5173",           //frontend local
+      "https://nestwebsite.onrender.com",//frontend website
     ],
   })
 );
