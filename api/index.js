@@ -11,18 +11,12 @@ const imageDownloader = require("image-downloader");
 const validUrl = require("valid-url");
 const multer = require("multer");
 const fs = require("fs");
-const path = require('path');
-
 
 const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads'), {
-  setHeaders: (res) => {
-    res.set('Access-Control-Allow-Origin', '*'); // Or specify your frontend URL here
-  },
-}));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 app.use(
   cors({
