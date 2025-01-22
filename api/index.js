@@ -18,15 +18,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
-app.use(
-  cors({
-    credentials: true,
-    origin: [
-      "http://localhost:5173",           //frontend local
-      "https://nestwebsite.onrender.com",//frontend website
-    ],
-  })
-);
+app.use(cors({
+  credentials: true,
+  origin: ["http://localhost:5173/", "https://nestwebsite.onrender.com",]
+}));
 
 app.use(cookieParser());
 
