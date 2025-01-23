@@ -168,7 +168,7 @@ export default function PlacesFormPage() {
               <div className="relative" key={idx}>
                 <img
                   className="aspect-square w-full object-cover rounded-xl"
-                  src={`http://localhost:5000/uploads/${link}`}
+                  src={`https://nestwebsite-backend.onrender.com/uploads/${link}`}
                   alt="err"
                 />
                 <button
