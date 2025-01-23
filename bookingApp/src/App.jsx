@@ -16,7 +16,7 @@ import BookingsPage from "./pages/BookingsPage";
 if (window.location.hostname === "localhost") {
   axios.defaults.baseURL = "http://localhost:5000/";
 } else {
-  axios.defaults.baseURL = "https://nestwebsite-backend.onrender.com";
+  axios.defaults.baseURL = "https://nestwebsite-backend.s.com";
 }
 axios.defaults.withCredentials = true;
 
