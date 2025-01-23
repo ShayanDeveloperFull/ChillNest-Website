@@ -168,9 +168,12 @@ export default function PlacesFormPage() {
               <div className="relative" key={idx}>
                 <img
                   className="aspect-square w-full object-cover rounded-xl"
-                  src={`https://nestwebsite-backend.onrender.com/uploads/${link}`}
+                  src={`https://nestwebsite-backend.onrender.com/${
+                    link.startsWith("uploads/") ? link : `uploads/${link}`
+                  }`}
                   alt="err"
                 />
+
                 <button
                   type="button"
                   onClick={() => {
