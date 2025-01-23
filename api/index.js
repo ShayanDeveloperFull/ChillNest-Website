@@ -102,10 +102,10 @@ app.post("/upload-by-link", async (req, res) => {
   if (!validUrl.isUri(photoLink)) {
     return res.status(400).json("Invalid URL provided");
   }
-  const newName = "uploads/photo" + Date.now() + ".jpg"; // Add 'uploads/' prefix
+  const newName = "photo" + Date.now() + ".jpg";
   await imageDownloader.image({
     url: photoLink,
-    dest: __dirname + "/" + newName // Save it in the 'uploads/' directory
+    dest: __dirname + "/uploads/" + newName
   });
   res.json(newName);
 });
@@ -120,7 +120,7 @@ app.post("/upload", photosMiddleWare.array("photos", 100), (req, res) => {
     const ext = parts[parts.length - 1];
     const newPath = path + "." + ext;
     fs.renameSync(path, newPath);
-    uploadedFiles.push("uploads/" + newPath.replace("uploads\\", "")); // Add 'uploads/' prefix
+    uploadedFiles.push(newPath.replace("uploads\\", ""));
   }
   res.json(uploadedFiles);
 });
