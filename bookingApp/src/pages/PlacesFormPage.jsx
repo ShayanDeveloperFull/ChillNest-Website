@@ -20,6 +20,11 @@ export default function PlacesFormPage() {
   const [price, setPrice] = useState("");
   const [redirect, setRedirect] = useState(false);
 
+  const baseUrl =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000"
+      : "https://nestwebsite-backend.onrender.com";
+
   useEffect(() => {
     if (!id) return;
 
@@ -168,7 +173,7 @@ export default function PlacesFormPage() {
               <div className="relative" key={idx}>
                 <img
                   className="aspect-square w-full object-cover rounded-xl"
-                  src={`https://nestwebsite-backend.onrender.com/uploads/${link}`}
+                  src={`${baseUrl}/uploads/${link}`}
                   alt="err"
                 />
                 <button

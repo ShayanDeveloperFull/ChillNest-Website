@@ -120,10 +120,11 @@ app.post("/upload", photosMiddleWare.array("photos", 100), (req, res) => {
     const ext = parts[parts.length - 1];
     const newPath = path + "." + ext;
     fs.renameSync(path, newPath);
-    uploadedFiles.push(newPath.replace("uploads\\", ""));
+    uploadedFiles.push(newPath.replace("uploads\\", "/uploads/"));
   }
   res.json(uploadedFiles);
 });
+
 
 app.post("/places", (req, res) => {
   const { blue } = req.cookies;
