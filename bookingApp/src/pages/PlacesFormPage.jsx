@@ -5,8 +5,6 @@ import { Navigate, useParams } from "react-router-dom";
 export default function PlacesFormPage() {
   const { id } = useParams();
 
-  //console.log(id);
-
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [addedPhotos, setAddedPhotos] = useState([]);
@@ -40,7 +38,6 @@ export default function PlacesFormPage() {
   async function addPhotoButton(e) {
     e.preventDefault();
     const { data } = await axios.post("/upload-by-link", { photoLink });
-    console.log(data);
     setAddedPhotos([...addedPhotos, data]);
     setPhotoLink("");
   }
@@ -192,7 +189,7 @@ export default function PlacesFormPage() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
+                      d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667"
                     />
                   </svg>
                 </button>
@@ -222,29 +219,29 @@ export default function PlacesFormPage() {
             ))}
 
           {/* Photo File Upload */}
-
-          <label className=" aspect-square group cursor-pointer flex items-center justify-center border bg-transparent rounded-2xl p-8 text-2xl text-gray-600 hover:shadow-[0_0_10px_rgba(0,0,255,0.5)] transition-shadow duration-300">
+          <label className="w-full h-full text-center cursor-pointer relative rounded-xl overflow-hidden">
             <input
               type="file"
-              className="hidden"
-              onChange={uploadPhoto}
               multiple
+              onChange={uploadPhoto}
+              className="w-full h-full opacity-0 absolute top-0 left-0"
             />
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6 transition-colors duration-300 group-hover:stroke-blue-800"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5"
-              />
-            </svg>
-            Upload
+            <div className="w-full h-full flex items-center justify-center bg-black bg-opacity-50 text-white">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="w-8 h-8"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 12l2 2m0 0l2-2m-2 2V3m10 12l2 2m0 0l2-2m-2 2V3"
+                />
+              </svg>
+            </div>
           </label>
         </div>
 
@@ -253,86 +250,62 @@ export default function PlacesFormPage() {
         <textarea
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          rows={4}
+          placeholder="Describe Your Place"
         />
 
         {/* Perks Section */}
         <h2 className="text-xl mt-4">Perks</h2>
-        <p className="text-gray-500 text-sm"></p>
-        <div className=" mt-2 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-          <label className="border p-4 flex gap-2 items-center cursor-pointer ">
-            <img className="h-10 w-auto" src="/wifiSymbol.webp" alt="" />
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <label className="flex items-center">
             <input
               type="checkbox"
-              checked={perks.includes("WIFI")}
-              name="WIFI"
-              onChange={(e) => handleCheckBox(e)}
+              checked={perks.includes("wifi")}
+              name="wifi"
+              onChange={handleCheckBox}
             />
-            <p>WIFI</p>
+            Wifi
           </label>
-          <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
-            <img className="h-10 w-auto" src="/parkingIcon.jpg" alt="" />
+          <label className="flex items-center">
             <input
               type="checkbox"
-              checked={perks.includes("Parking")}
-              name="Parking"
-              onChange={(e) => handleCheckBox(e)}
+              checked={perks.includes("tv")}
+              name="tv"
+              onChange={handleCheckBox}
             />
-            <p>Parking</p>
+            TV
           </label>
-          <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
-            <img className="h-10 w-auto" src="/petIcon.jpg" alt="" />
+          <label className="flex items-center">
             <input
               type="checkbox"
-              checked={perks.includes("Pets")}
-              name="Pets"
-              onChange={(e) => handleCheckBox(e)}
+              checked={perks.includes("airConditioner")}
+              name="airConditioner"
+              onChange={handleCheckBox}
             />
-            <p>Pets</p>
-          </label>
-          <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer ">
-            <img className="h-10 w-auto" src="/hotTubIcon.jpg" alt="" />
-            <input
-              type="checkbox"
-              checked={perks.includes("Hot Tub")}
-              name="Hot Tub"
-              onChange={(e) => handleCheckBox(e)}
-            />
-            <p>Hot Tub</p>
-          </label>
-          <label className="border p-4 whitespace-nowrap flex gap-2 items-center cursor-pointer">
-            <img className="h-10 w-auto" src="/tvStreaming.webp" alt="" />
-            <input
-              type="checkbox"
-              checked={perks.includes("TV Streaming Services")}
-              name="TV Streaming Services"
-              onChange={(e) => handleCheckBox(e)}
-            />
-            <p>TV Streaming Services</p>
+            Air Conditioner
           </label>
         </div>
 
         {/* Extra Info Section */}
-        <h2 className="text-xl mt-4">Extra Info</h2>
-        <p className="text-gray-500 text-sm">
-          Special Rules, Appliance regulations, etc..
-        </p>
+        <h2 className="text-xl mt-4">Extra Information</h2>
         <textarea
           value={extraInfo}
           onChange={(e) => setExtraInfo(e.target.value)}
+          rows={4}
+          placeholder="Extra Information"
         />
 
-        {/* Check-In/Check-Out Section */}
-        <div className="grid gap-2 sm:grid-cols-2">
+        {/* Check-in/Check-out Section */}
+        <h2 className="text-xl mt-4">Check-In & Check-Out</h2>
+        <div className="flex gap-4">
           <div>
-            <h3 className="mt-2 -mb-1">Available From</h3>
+            <label>Check-In Date</label>
             <input
               type="date"
               value={checkIn.Date}
               onChange={(e) => setCheckIn({ ...checkIn, Date: e.target.value })}
             />
-          </div>
-          <div>
-            <h3 className="mt-2 -mb-1">Check-In Time</h3>
+            <label>Time</label>
             <input
               type="time"
               value={checkIn.Time}
@@ -340,7 +313,7 @@ export default function PlacesFormPage() {
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-1">Available Until</h3>
+            <label>Check-Out Date</label>
             <input
               type="date"
               value={checkOut.Date}
@@ -348,9 +321,7 @@ export default function PlacesFormPage() {
                 setCheckOut({ ...checkOut, Date: e.target.value })
               }
             />
-          </div>
-          <div>
-            <h3 className="mt-2 -mb-1">Check-Out Time</h3>
+            <label>Time</label>
             <input
               type="time"
               value={checkOut.Time}
@@ -359,31 +330,30 @@ export default function PlacesFormPage() {
               }
             />
           </div>
+        </div>
 
-          {/* Guests Section */}
-          <div>
-            <h3 className="mt-2 -mb-1">Max Number of Guests</h3>
-            <input
-              type="number"
-              value={maxGuests}
-              onChange={(e) => setMaxGuests(e.target.value)}
-            />
-          </div>
-          <div>
-            <h3 className="mt-2 -mb-1">Price/Night</h3>
-            <input
-              type="number"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </div>
-        </div>
-        {/* Upload Button*/}
-        <div>
-          <button className="mt-3 primary transform active:scale-95 transition-transform duration-150">
-            Save
-          </button>
-        </div>
+        {/* Max Guests and Price Section */}
+        <h2 className="text-xl mt-4">Max Guests and Price</h2>
+        <input
+          type="number"
+          placeholder="Max Guests"
+          value={maxGuests}
+          onChange={(e) => setMaxGuests(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Price per Night"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          className="bg-custom-blue text-white p-2 rounded-2xl transform active:scale-95 transition-transform duration-150 mt-4"
+        >
+          Save Place
+        </button>
       </form>
     </div>
   );
