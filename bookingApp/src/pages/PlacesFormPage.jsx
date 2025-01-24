@@ -363,13 +363,12 @@ export default function PlacesFormPage() {
           onChange={(e) => setPrice(e.target.value)}
         />
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className=" bg-custom-blue w-full text-white font-semibold  rounded-2xl mt-4"
-        >
-          Save
-        </button>
+        {/* Save Button*/}
+        <div>
+          <button className="mt-3 primary transform active:scale-95 transition-transform duration-150">
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );
