@@ -57,19 +57,20 @@ export default function MainPage() {
             >
               {place.addedPhotos.length > 0 && (
                 <div className="flex">
-                  {place.addedPhotos.map((link, idx) => {
-                    const imagePath = link.startsWith("uploads/")
-                      ? link
-                      : `uploads/${link}`;
+                  {(() => {
+                    const firstImage = place.addedPhotos[0];
+                    const imagePath = firstImage.startsWith("uploads/")
+                      ? firstImage
+                      : `uploads/${firstImage}`;
                     return (
                       <img
-                        key={idx}
+                        key={place._id}
                         className="mb-2 object-cover aspect-square rounded-lg"
                         src={`${baseURL}/${imagePath}`}
                         alt={place.title}
                       />
                     );
-                  })}
+                  })()}
                 </div>
               )}
               <h2 className="font-bold text-gray-800 group-hover:text-indigo-600 mb-1">

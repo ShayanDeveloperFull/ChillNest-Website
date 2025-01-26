@@ -3,6 +3,11 @@ import { useState } from "react";
 export default function PlaceDisplay({ place }) {
   const [showAllPhotos, setShowAllPhotos] = useState(false);
 
+  const baseURL =
+    window.location.hostname === "localhost"
+      ? "http://localhost:5000"
+      : "https://nestwebsite-backend.onrender.com";
+
   if (showAllPhotos) {
     return (
       <div className="fixed inset-0 text-white overflow-auto">
@@ -19,15 +24,20 @@ export default function PlaceDisplay({ place }) {
             X
           </button>
           {place.addedPhotos.length > 0 &&
-            place.addedPhotos.map((photo) => (
-              <div key={photo} className="flex justify-center">
-                <img
-                  className="w-[1500px] h-[800px] rounded-2xl border border-yellow-400"
-                  src={`https://nestwebsite-server.onrender.com/uploads/${photo}`}
-                  alt=""
-                />
-              </div>
-            ))}
+            place.addedPhotos.map((photo) => {
+              const imagePath = photo.startsWith("uploads/")
+                ? photo
+                : `uploads/${photo}`;
+              return (
+                <div key={photo} className="flex justify-center">
+                  <img
+                    className="w-[1500px] h-[800px] rounded-2xl border border-yellow-400"
+                    src={`${baseURL}/${imagePath}`}
+                    alt=""
+                  />
+                </div>
+              );
+            })}
         </div>
       </div>
     );
@@ -61,7 +71,7 @@ export default function PlaceDisplay({ place }) {
                 {place.addedPhotos.length > 0 && (
                   <img
                     className="aspect-square object-cover h-[850px] w-full rounded-l-3xl"
-                    src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[0]}`}
+                    src={`${baseURL}/uploads/${place.addedPhotos[0]}`}
                     alt=""
                   />
                 )}
@@ -70,7 +80,7 @@ export default function PlaceDisplay({ place }) {
                 {place.addedPhotos.length > 1 && (
                   <img
                     className="aspect-square object-cover h-[450px] w-full rounded-r-3xl"
-                    src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[1]}`}
+                    src={`${baseURL}/uploads/${place.addedPhotos[1]}`}
                     alt=""
                   />
                 )}
@@ -78,7 +88,7 @@ export default function PlaceDisplay({ place }) {
                   {place.addedPhotos.length > 2 && (
                     <img
                       className="aspect-square object-cover relative top-2 h-[400px] w-full rounded-r-3xl"
-                      src={`https://nestwebsite-server.onrender.com/uploads/${place.addedPhotos[2]}`}
+                      src={`${baseURL}/uploads/${place.addedPhotos[2]}`}
                       alt=""
                     />
                   )}
