@@ -7,11 +7,6 @@ export default function MainPage() {
   const { checkInDate, checkOutDate } = useContext(UserContext);
   const [filteredPlaces, setFilteredPlaces] = useState([]);
 
-  const baseURL =
-    window.location.hostname === "localhost"
-      ? "http://localhost:5000"
-      : "https://nestwebsite-backend.onrender.com";
-
   useEffect(() => {
     axios
       .get("/places", {
@@ -57,20 +52,11 @@ export default function MainPage() {
             >
               {place.addedPhotos.length > 0 && (
                 <div className="flex">
-                  {(() => {
-                    const firstImage = place.addedPhotos[0];
-                    const imagePath = firstImage.startsWith("uploads/")
-                      ? firstImage
-                      : `uploads/${firstImage}`;
-                    return (
-                      <img
-                        key={place._id}
-                        className="mb-2 object-cover aspect-square rounded-lg"
-                        src={`${baseURL}/${imagePath}`}
-                        alt={place.title}
-                      />
-                    );
-                  })()}
+                  <img
+                    className="mb-2 object-cover aspect-square rounded-lg"
+                    src={`https://nestwebsite-server.onrender.com/${place.addedPhotos[0]}`}
+                    alt={place.title}
+                  />
                 </div>
               )}
               <h2 className="font-bold text-gray-800 group-hover:text-indigo-600 mb-1">
