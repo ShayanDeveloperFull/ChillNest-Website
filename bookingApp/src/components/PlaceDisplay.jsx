@@ -68,30 +68,54 @@ export default function PlaceDisplay({ place }) {
           <div className="relative">
             <div className="grid gap-2 grid-cols-[2fr_1fr]">
               <div>
-                {place.addedPhotos.length > 0 && (
-                  <img
-                    className="aspect-square object-cover h-[850px] w-full rounded-l-3xl"
-                    src={`${baseURL}/uploads/${place.addedPhotos[0]}`}
-                    alt=""
-                  />
-                )}
+                {place.addedPhotos.length > 0 &&
+                  (() => {
+                    const imagePath = place.addedPhotos[0].startsWith(
+                      "uploads/"
+                    )
+                      ? place.addedPhotos[0]
+                      : `uploads/${place.addedPhotos[0]}`;
+                    return (
+                      <img
+                        className="aspect-square object-cover h-[850px] w-full rounded-l-3xl"
+                        src={`${baseURL}/${imagePath}`}
+                        alt=""
+                      />
+                    );
+                  })()}
               </div>
               <div className="grid">
-                {place.addedPhotos.length > 1 && (
-                  <img
-                    className="aspect-square object-cover h-[450px] w-full rounded-r-3xl"
-                    src={`${baseURL}/uploads/${place.addedPhotos[1]}`}
-                    alt=""
-                  />
-                )}
+                {place.addedPhotos.length > 1 &&
+                  (() => {
+                    const imagePath = place.addedPhotos[1].startsWith(
+                      "uploads/"
+                    )
+                      ? place.addedPhotos[1]
+                      : `uploads/${place.addedPhotos[1]}`;
+                    return (
+                      <img
+                        className="aspect-square object-cover h-[450px] w-full rounded-r-3xl"
+                        src={`${baseURL}/${imagePath}`}
+                        alt=""
+                      />
+                    );
+                  })()}
                 <div className="overflow-hidden">
-                  {place.addedPhotos.length > 2 && (
-                    <img
-                      className="aspect-square object-cover relative top-2 h-[400px] w-full rounded-r-3xl"
-                      src={`${baseURL}/uploads/${place.addedPhotos[2]}`}
-                      alt=""
-                    />
-                  )}
+                  {place.addedPhotos.length > 2 &&
+                    (() => {
+                      const imagePath = place.addedPhotos[2].startsWith(
+                        "uploads/"
+                      )
+                        ? place.addedPhotos[2]
+                        : `uploads/${place.addedPhotos[2]}`;
+                      return (
+                        <img
+                          className="aspect-square object-cover relative top-2 h-[400px] w-full rounded-r-3xl"
+                          src={`${baseURL}/${imagePath}`}
+                          alt=""
+                        />
+                      );
+                    })()}
                 </div>
               </div>
               <button
