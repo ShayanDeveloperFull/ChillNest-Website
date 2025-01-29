@@ -261,8 +261,8 @@ export default function PlacesFormPage() {
 
         {/* Perks Section */}
         <h2 className="text-xl mt-4">Perks</h2>
+        <p className="text-gray-500 text-sm"></p>
         <div className=" mt-2 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-          {/* Checkboxes for perks */}
           <label className="border p-4 flex gap-2 items-center cursor-pointer ">
             <img className="h-10 w-auto" src="/wifiSymbol.webp" alt="" />
             <input
@@ -284,52 +284,67 @@ export default function PlacesFormPage() {
             <p>Parking</p>
           </label>
           <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
-            <img className="h-10 w-auto" src="/petsIcon.png" alt="" />
+            <img className="h-10 w-auto" src="/petIcon.jpg" alt="" />
             <input
               type="checkbox"
-              checked={perks.includes("Pets Allowed")}
-              name="Pets Allowed"
+              checked={perks.includes("Pets")}
+              name="Pets"
               onChange={(e) => handleCheckBox(e)}
             />
-            <p>Pets Allowed</p>
+            <p>Pets</p>
           </label>
-          <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer">
-            <img className="h-10 w-auto" src="/poolIcon.png" alt="" />
+          <label className="border whitespace-nowrap p-4 flex gap-2 items-center cursor-pointer ">
+            <img className="h-10 w-auto" src="/hotTubIcon.jpg" alt="" />
             <input
               type="checkbox"
-              checked={perks.includes("Pool")}
-              name="Pool"
+              checked={perks.includes("Hot Tub")}
+              name="Hot Tub"
               onChange={(e) => handleCheckBox(e)}
             />
-            <p>Pool</p>
+            <p>Hot Tub</p>
+          </label>
+          <label className="border p-4 whitespace-nowrap flex gap-2 items-center cursor-pointer">
+            <img className="h-10 w-auto" src="/tvStreaming.webp" alt="" />
+            <input
+              type="checkbox"
+              checked={perks.includes("TV Streaming Services")}
+              name="TV Streaming Services"
+              onChange={(e) => handleCheckBox(e)}
+            />
+            <p>TV Streaming Services</p>
           </label>
         </div>
 
-        {/* Additional Info Section */}
-        <h2 className="text-xl mt-4">Additional Info</h2>
+        {/* Extra Info Section */}
+        <h2 className="text-xl mt-4">Extra Info</h2>
+        <p className="text-gray-500 text-sm">
+          Special Rules, Appliance regulations, etc..
+        </p>
         <textarea
           value={extraInfo}
           onChange={(e) => setExtraInfo(e.target.value)}
         />
 
-        {/* Check-In & Check-Out Section */}
-        <h2 className="text-xl mt-4">Check-In and Check-Out</h2>
-        <div className="flex">
-          <div className="flex-grow">
-            <label>Check-In</label>
+        {/* Check-In/Check-Out Section */}
+        <div className="grid gap-2 sm:grid-cols-2">
+          <div>
+            <h3 className="mt-2 -mb-1">Available From</h3>
             <input
               type="date"
               value={checkIn.Date}
               onChange={(e) => setCheckIn({ ...checkIn, Date: e.target.value })}
             />
+          </div>
+          <div>
+            <h3 className="mt-2 -mb-1">Check-In Time</h3>
             <input
               type="time"
               value={checkIn.Time}
               onChange={(e) => setCheckIn({ ...checkIn, Time: e.target.value })}
             />
           </div>
-          <div className="flex-grow ml-4">
-            <label>Check-Out</label>
+          <div>
+            <h3 className="mt-2 -mb-1">Available Until</h3>
             <input
               type="date"
               value={checkOut.Date}
@@ -337,6 +352,9 @@ export default function PlacesFormPage() {
                 setCheckOut({ ...checkOut, Date: e.target.value })
               }
             />
+          </div>
+          <div>
+            <h3 className="mt-2 -mb-1">Check-Out Time</h3>
             <input
               type="time"
               value={checkOut.Time}
@@ -345,25 +363,26 @@ export default function PlacesFormPage() {
               }
             />
           </div>
+
+          {/* Guests Section */}
+          <div>
+            <h3 className="mt-2 -mb-1">Max Number of Guests</h3>
+            <input
+              type="number"
+              value={maxGuests}
+              onChange={(e) => setMaxGuests(e.target.value)}
+            />
+          </div>
+          <div>
+            <h3 className="mt-2 -mb-1">Price/Night</h3>
+            <input
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
         </div>
-
-        {/* Max Guests Section */}
-        <h2 className="text-xl mt-4">Max Guests</h2>
-        <input
-          type="number"
-          value={maxGuests}
-          onChange={(e) => setMaxGuests(e.target.value)}
-        />
-
-        {/* Price Section */}
-        <h2 className="text-xl mt-4">Price</h2>
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-
-        {/* Save Button*/}
+        {/* Upload Button*/}
         <div>
           <button className="mt-3 primary transform active:scale-95 transition-transform duration-150">
             Save
