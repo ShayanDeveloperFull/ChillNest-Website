@@ -10,7 +10,7 @@ export default function MainPage() {
   const baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : "https://nestwebsite-backend.onrender.com";
+      : "https://chillnest-website-backend.onrender.com";
 
   useEffect(() => {
     axios

@@ -6,7 +6,7 @@ export default function PlaceImage({ place, idx = 0, className = null }) {
   const baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : "https://nestwebsite-backend.onrender.com";
+      : "https://chillnest-website-backend.onrender.com";
 
   const imagePath = place.addedPhotos[idx].startsWith("uploads/")
     ? place.addedPhotos[idx]

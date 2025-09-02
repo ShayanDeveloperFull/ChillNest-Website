@@ -6,7 +6,7 @@ export default function PlaceDisplay({ place }) {
   const baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : "https://nestwebsite-backend.onrender.com";
+      : "https://chillnest-website-backend.onrender.com";
 
   if (showAllPhotos) {
     return (

@@ -8,7 +8,7 @@ export default function PlacesFormPage() {
   const baseURL =
     window.location.hostname === "localhost"
       ? "http://localhost:5000"
-      : "https://nestwebsite-backend.onrender.com";
+      : "https://chillnest-website-backend.onrender.com";
 
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
