@@ -59,7 +59,7 @@ app.post('/login', async (req, res) => {
         if (err) throw err;
         res.cookie("blue", token, {
           httpOnly: true,
-          secure: false,
+          secure: true,
           sameSite: 'none'
         }).json(userDoc);
       });
@@ -87,7 +87,7 @@ app.get("/profile", (req, res) => {
 app.post("/logout", (req, res) => {
   res.cookie("blue", "", {
     httpOnly: true,
-    secure: false,
+    secure: true,
     sameSite: 'none',
     maxAge: 0
   }).json(true);
