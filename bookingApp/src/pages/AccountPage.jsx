@@ -37,12 +37,11 @@ export default function AccountPage() {
       <AccountNav />
       {profilePage === "profile" && (
         <div className="text-center max-w-lg mx-auto">
-          {/* Mobile (< md): email on its own line */}
           <div className="md:hidden">
             <span>Logged in As {user.name}</span>
             <div className="text-sm text-gray-600 break-all">{user.email}</div>
           </div>
-          {/* Desktop (>= md): original single-line format */}
+
           <div className="hidden md:block">
             Logged in As {user.name} ({user.email})
           </div>

@@ -67,53 +67,54 @@ export default function PlacePage() {
   }
 
   return (
-    <div>
-      {/* Place Display and Booking Form */}
+    <div className="pb-0 md:pb-4">
       <div>
         <PlaceDisplay place={place} />
       </div>
 
-      {/* Description */}
-      <div className="my-6 p-4 bg-white rounded-2xl shadow-lg w-[45%]">
+      <div className="mt-6 mb-3 md:mb-6 p-4 bg-white rounded-2xl shadow-lg w-full md:w-[45%]">
         <h2 className="font-semibold text-2xl mb-2 border-b pb-2">
           <span className="bg-yellow-200 p-1 rounded-md">Description</span>
         </h2>
         <p className="text-gray-700 text-lg">{place.description}</p>
       </div>
 
-      {/* Grid Layout for Info */}
-      <div className="grid grid-cols-2 gap-6 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-3 md:mb-6">
         {/* Left Section */}
-        <div className="p-6 bg-white rounded-2xl shadow-lg">
+        <div className="p-4 md:p-6 bg-white rounded-2xl shadow-lg">
           <div className="mb-4">
-            <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
+            <span className="bg-yellow-200 p-1 rounded-md font-bold text-base md:text-lg">
               Available From:
             </span>
-            <span className="ml-3 mr-4 text-gray-600">
+            <span className="ml-2 md:ml-3 mr-2 md:mr-4 text-gray-600 text-sm md:text-base break-words">
               📆 {place.checkIn.Date}
             </span>
-            ⌚{place.checkIn.Time}
+            <span className="text-sm md:text-base">⌚{place.checkIn.Time}</span>
           </div>
           <div className="mb-4">
-            <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
+            <span className="bg-yellow-200 p-1 rounded-md font-bold text-base md:text-lg">
               Available Until:
             </span>
-            <span className="ml-4 mr-4 text-gray-600">
+            <span className="ml-2 md:ml-4 mr-2 md:mr-4 text-gray-600 text-sm md:text-base break-words">
               📆 {place.checkOut.Date}
             </span>
-            ⌚{place.checkOut.Time}
+            <span className="text-sm md:text-base">
+              ⌚{place.checkOut.Time}
+            </span>
           </div>
           <div className="mb-4">
-            <span className="bg-yellow-200 mr-8 p-1 rounded-md font-bold text-lg">
+            <span className="bg-yellow-200 mr-4 md:mr-8 p-1 rounded-md font-bold text-base md:text-lg">
               Guest Limit:
             </span>
-            <span className="ml-2 text-gray-600">🧑 {place.maxGuests}</span>
+            <span className="ml-2 text-gray-600 text-sm md:text-base">
+              🧑 {place.maxGuests}
+            </span>
           </div>
           <div className="mb-4">
-            <span className="bg-yellow-200 p-1 rounded-md font-bold text-lg">
+            <span className="bg-yellow-200 p-1 rounded-md font-bold text-base md:text-lg">
               Perks:
             </span>
-            <ul className="list-disc ml-6 text-gray-600 mt-2">
+            <ul className="list-disc ml-5 md:ml-6 text-gray-600 mt-2 text-sm md:text-base">
               {place.perks &&
                 place.perks.map((perk, idx) => (
                   <li key={idx} className="mb-1">
@@ -123,10 +124,12 @@ export default function PlacePage() {
             </ul>
           </div>
           <div className="mb-3">
-            <span className="bg-yellow-200 p-1 rounded-md font-semibold text-xl mb-2">
+            <span className="bg-yellow-200 p-1 rounded-md font-semibold text-lg md:text-xl mb-2">
               Extra Info:
             </span>
-            <p className="mt-1 text-gray w-1/2">{place.extraInfo}</p>
+            <p className="mt-1 text-gray w-full md:w-1/2 text-sm md:text-base break-words">
+              {place.extraInfo}
+            </p>
           </div>
         </div>
 
@@ -164,7 +167,7 @@ export default function PlacePage() {
 
       <button
         onClick={bookNow}
-        className="font-semibold primary max-h transition-all duration-200 ease-in-out active:scale-95"
+        className="font-semibold primary max-h transition-all duration-200 ease-in-out active:scale-95 mb-0 block"
       >
         Book Now
       </button>
