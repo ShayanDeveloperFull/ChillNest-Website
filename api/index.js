@@ -60,8 +60,7 @@ app.post('/login', async (req, res) => {
         res.cookie("blue", token, {
           httpOnly: true,
           secure: true,
-          sameSite: 'none',
-          domain: "chillnestweb.onrender.com"
+          sameSite: 'none'
         }).json(userDoc);
       });
     } else {
@@ -90,10 +89,10 @@ app.post("/logout", (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    domain: "chillnestweb.onrender.com",
     maxAge: 0
   }).json(true);
 });
+
 
 app.post("/upload-by-link", async (req, res) => {
   const { photoLink } = req.body;
