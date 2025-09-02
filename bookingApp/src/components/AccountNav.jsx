@@ -14,7 +14,9 @@ export default function AccountNav() {
   }
 
   function accountClasses(type = null) {
-    let classes = "inline-flex gap-1 py-2 px-6 rounded-full ";
+    // Smaller padding & font on mobile; original spacing retained on >= md
+    let classes =
+      "inline-flex gap-1 py-2 px-3 md:px-6 rounded-full text-xs md:text-base whitespace-nowrap";
     if (type === profilePage) {
       classes = classes + " bg-blue-600 text-white rounded-full";
     } else {
