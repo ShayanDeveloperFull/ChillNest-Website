@@ -13,12 +13,20 @@ import PlacePage from "./pages/PlacePage";
 import BookingPlace from "./pages/BookingPlace";
 import BookingsPage from "./pages/BookingsPage";
 
+// Set baseURL
 if (window.location.hostname === "localhost") {
   axios.defaults.baseURL = "http://localhost:5000/";
 } else {
   axios.defaults.baseURL = "https://chillnest-website-backend.onrender.com";
 }
-axios.defaults.withCredentials = true;
+
+// Remove withCredentials since we are using JWT
+// Automatically attach JWT from localStorage to all requests
+axios.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
 function App() {
   return (

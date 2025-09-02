@@ -14,23 +14,19 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       const { data } = await axios.post("/login", { email, password });
-      //console.log(data);
-      setUser(data);
-      alert("Login Successful");
+      localStorage.setItem("token", data.token);
+      setUser(data.user);
       setRedirect(true);
     } catch (err) {
-      console.log(err);
-      if (err.response.status === 404) {
+      if (err.response?.data) {
         setFailLogin(err.response.data);
       } else {
-        setFailLogin(err.response.data);
+        setFailLogin("Login failed");
       }
     }
   }
 
-  if (redirect) {
-    return <Navigate to={"/"} />;
-  }
+  if (redirect) return <Navigate to={"/"} />;
 
   return (
     <div className="mt-4 grow flex items-center justify-around">

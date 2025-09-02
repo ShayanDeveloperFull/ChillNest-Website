@@ -11,13 +11,21 @@ export default function UserContextProvider({ children }) {
   const [checkOutDate, setCheckOutDate] = useState("");
 
   useEffect(() => {
-    if (!user) {
-      axios.get("/profile").then(({ data }) => {
-        setUser(data);
-        setReady(true);
-      });
+    const token = localStorage.getItem("token");
+    if (token && !user) {
+      axios
+        .get("/profile", { headers: { Authorization: `Bearer ${token}` } })
+        .then(({ data }) => setUser(data))
+        .finally(() => setReady(true));
+    } else {
+      setReady(true);
     }
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
 
   return (
     <UserContext.Provider
@@ -29,6 +37,7 @@ export default function UserContextProvider({ children }) {
         setCheckInDate,
         checkOutDate,
         setCheckOutDate,
+        logout,
       }}
     >
       {children}
