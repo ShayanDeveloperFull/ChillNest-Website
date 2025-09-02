@@ -1,36 +1,26 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../userContext";
 import { Navigate, useParams } from "react-router-dom";
-import axios from "axios";
 import PlacesPage from "./UserPlacesPage";
 import AccountNav from "../components/AccountNav";
 
 export default function AccountPage() {
-  const { ready, user, setUser } = useContext(UserContext);
+  const { ready, user, logout } = useContext(UserContext);
   const [redirect, setRedirect] = useState(false);
 
   let { profilePage } = useParams();
-  if (profilePage === undefined) {
-    profilePage = "profile";
-  }
+  if (profilePage === undefined) profilePage = "profile";
 
-  async function logout() {
-    await axios.post("/logout");
-    setUser(null);
+  function handleLogout() {
+    logout();
     setRedirect(true);
   }
 
-  if (!ready) {
-    return "LOADING........";
-  }
+  if (!ready) return "LOADING........";
 
-  if (ready && !user && !redirect) {
-    return <Navigate to={"/login"} />;
-  }
+  if (ready && !user && !redirect) return <Navigate to={"/login"} />;
 
-  if (redirect) {
-    return <Navigate to={"/"} />;
-  }
+  if (redirect) return <Navigate to={"/"} />;
 
   return (
     <div>
@@ -41,19 +31,17 @@ export default function AccountPage() {
             <span>Logged in As {user.name}</span>
             <div className="text-sm text-gray-600 break-all">{user.email}</div>
           </div>
-
           <div className="hidden md:block">
             Logged in As {user.name} ({user.email})
           </div>
           <button
-            onClick={logout}
+            onClick={handleLogout}
             className="primary max-w-sm mt-2 transform active:scale-95 transition-transform duration-150"
           >
             Logout
           </button>
         </div>
       )}
-
       {profilePage === "places" && <PlacesPage />}
     </div>
   );
