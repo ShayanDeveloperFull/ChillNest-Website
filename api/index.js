@@ -14,6 +14,11 @@ const fs = require("fs");
 
 const app = express();
 
+// ===================================================================
+// THIS IS THE LINE THAT WAS ADDED TO FIX THE MOBILE COOKIE ISSUE
+app.set("trust proxy", 1);
+// ===================================================================
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/uploads", express.static(__dirname + "/uploads"));
