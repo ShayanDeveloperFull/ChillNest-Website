@@ -53,7 +53,7 @@ app.post('/login', async (req, res) => {
   const passOk = bcrypt.compareSync(password, userDoc.password);
   if (!passOk) return res.status(404).json("Password does not match");
 
-  const token = jwt.sign({ email: userDoc.email, id: userDoc._id }, jwtAccess, { expiresIn: '7d' });
+  const token = jwt.sign({ email: userDoc.email, id: userDoc._id }, jwtAccess);
   res.json({ token, user: userDoc });
 });
 
